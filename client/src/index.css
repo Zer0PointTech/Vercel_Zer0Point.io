@@ -131,7 +131,12 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply text-foreground font-sans antialiased;
+    background: radial-gradient(at left top, rgba(102, 126, 234, 0.15) 0%, rgba(0, 0, 0, 0) 50%), 
+                radial-gradient(at right bottom, rgba(118, 75, 162, 0.15) 0%, rgba(0, 0, 0, 0) 50%), 
+                linear-gradient(rgb(10, 10, 10) 0%, rgb(26, 26, 46) 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-display tracking-tight;
@@ -188,6 +193,4 @@
   100% { background-position: 0% 50%; }
 }
 
-.animate-gradient {
-  animation: gradient 8s ease infinite;
-}
+
