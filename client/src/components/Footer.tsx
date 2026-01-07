@@ -14,11 +14,9 @@ export default function Footer() {
       <div className="container relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="col-span-1 md:col-span-2">
-            <Link href="/">
-              <a className="flex items-center gap-2 mb-6">
+            <Link href="/" className="flex items-center gap-2 mb-6">
                 <img src={logoTransparent} alt="Zer0Point Logo" className="h-16 w-auto" />
                 {/* Logo includes text now */}
-              </a>
             </Link>
             <p className="text-muted-foreground max-w-md text-lg leading-relaxed">
               Zero limits. Infinite possibilities. Enabling rapid, scalable GCC market access with global standards and local execution.
@@ -30,10 +28,11 @@ export default function Footer() {
             <ul className="space-y-4">
               {['Home', 'Services', 'About', 'Contact'].map((item) => (
                 <li key={item}>
-                  <Link href={`/${item.toLowerCase() === 'home' ? '' : item.toLowerCase()}`}>
-                    <a className="text-muted-foreground hover:text-primary transition-colors">
-                      {item}
-                    </a>
+                  <Link 
+                    href={`/${item.toLowerCase() === 'home' ? '' : item.toLowerCase()}`}
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    {item}
                   </Link>
                 </li>
               ))}

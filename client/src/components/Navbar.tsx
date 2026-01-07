@@ -31,28 +31,26 @@ export default function Navbar() {
       }`}
     >
       <div className="container flex items-center justify-between">
-        <Link href="/">
-          <a className="flex items-center gap-2 group">
+        <Link href="/" className="flex items-center gap-2 group">
             <img 
               src={logoTransparent} 
               alt="Zer0Point Logo" 
               className="h-12 w-auto transition-transform duration-300 group-hover:scale-105" 
             />
             {/* Logo includes text now */}
-          </a>
         </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <Link key={link.name} href={link.href}>
-              <a
-                className={`text-sm font-medium transition-colors hover:text-primary ${
-                  location === link.href ? 'text-primary' : 'text-muted-foreground'
-                }`}
-              >
-                {link.name}
-              </a>
+            <Link 
+              key={link.name} 
+              href={link.href}
+              className={`text-sm font-medium transition-colors hover:text-primary ${
+                location === link.href ? 'text-primary' : 'text-muted-foreground'
+              }`}
+            >
+              {link.name}
             </Link>
           ))}
           <Button variant="outline" className="border-primary/50 text-primary hover:bg-primary hover:text-background transition-all duration-300">
@@ -73,15 +71,15 @@ export default function Navbar() {
       {isMobileMenuOpen && (
         <div className="md:hidden absolute top-full left-0 right-0 bg-background border-b border-white/10 p-4 flex flex-col gap-4 animate-in slide-in-from-top-5">
           {navLinks.map((link) => (
-            <Link key={link.name} href={link.href}>
-              <a
-                className={`text-lg font-medium transition-colors hover:text-primary ${
-                  location === link.href ? 'text-primary' : 'text-muted-foreground'
-                }`}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {link.name}
-              </a>
+            <Link 
+              key={link.name} 
+              href={link.href}
+              className={`text-lg font-medium transition-colors hover:text-primary ${
+                location === link.href ? 'text-primary' : 'text-muted-foreground'
+              }`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              {link.name}
             </Link>
           ))}
           <Button className="w-full bg-primary text-background hover:bg-primary/90">
