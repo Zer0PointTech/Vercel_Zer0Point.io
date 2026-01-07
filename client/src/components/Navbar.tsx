@@ -35,7 +35,7 @@ export default function Navbar() {
             <img 
               src={logoTransparent} 
               alt="Zer0Point Logo" 
-              className="h-12 w-auto transition-transform duration-300 group-hover:scale-105" 
+              className="h-12 w-auto transition-transform duration-300 group-hover:scale-105" style={{width: '82px', height: '83px'}} 
             />
             {/* Logo includes text now */}
         </Link>
