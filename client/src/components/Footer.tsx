@@ -1,5 +1,5 @@
 import { Link } from 'wouter';
-import logoTransparent from '@/assets/logo-with-slogan.png';
+import logoTransparent from '@/assets/logo-white-slogan.png';
 import { Twitter, Linkedin, Mail, MapPin } from 'lucide-react';
 
 export default function Footer() {

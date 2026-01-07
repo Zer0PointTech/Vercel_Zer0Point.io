@@ -1,0 +1,11 @@
+- [ ] Copy new team photos and logos to assets directory
+- [ ] Update Navbar logo to use the best fitting version (likely white text for dark theme)
+- [ ] Rename "Immersive Tech" page/tab to "XR/VR"
+- [ ] Update main tagline/description to include "Consultancy"
+- [ ] Fix button functionality: "Success Stories" and "Start Journey" -> Contact page
+- [ ] Update "Strategic Trade Hub" section content
+- [ ] Update "Pillars" section content (Entity Setup, Banking & Tax, Business Development, Marketing)
+- [ ] Update all email addresses to info@zer0point.io
+- [ ] Update Team section with Naji Masri and Daniel Khayat photos and info
+- [ ] Verify all links and buttons
+- [ ] Deploy updated website

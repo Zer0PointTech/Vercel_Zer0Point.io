@@ -31,7 +31,7 @@ export default function Home() {
       icon: <Building2 className="w-10 h-10 text-primary" />,
       title: "Entity Setup",
       description: "Complete regulatory structuring and compliance setup 4-6 weeks faster than standard.",
-      features: ["LLC, Branch, Regional HQ", "Mainland vs. Free Zone", "Sponsor Requirements"]
+      features: ["LLC, Branch, Regional HQ", "Mainland vs. Free Zone", "Sponsor Requirements", "Consulting"]
     },
     {
       icon: <TrendingUp className="w-10 h-10 text-primary" />,
@@ -79,8 +79,8 @@ export default function Home() {
           </div>
           
           <h1 className="font-display font-bold text-5xl md:text-7xl lg:text-8xl tracking-tight mb-8 leading-[1.1] reveal">
-            Market Entry Solutions <br />
-            <span className="text-gradient">for Startups & SMEs</span>
+            Market Entry & Consultancy <br />
+            <span className="text-gradient">Global & Regional Solutions</span>
           </h1>
           
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed reveal">
@@ -88,10 +88,19 @@ export default function Home() {
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 reveal">
-            <Button size="lg" className="h-14 px-8 text-lg bg-primary text-background hover:bg-primary/90 rounded-none border border-primary/50 shadow-[0_0_20px_rgba(var(--primary),0.3)] transition-all hover:shadow-[0_0_40px_rgba(var(--primary),0.5)]">
+            <Button 
+              size="lg" 
+              className="h-14 px-8 text-lg bg-primary text-background hover:bg-primary/90 rounded-none border border-primary/50 shadow-[0_0_20px_rgba(var(--primary),0.3)] transition-all hover:shadow-[0_0_40px_rgba(var(--primary),0.5)]"
+              onClick={() => window.location.href = '/contact'}
+            >
               Start Your Journey <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
-            <Button variant="outline" size="lg" className="h-14 px-8 text-lg border-white/20 hover:bg-white/5 hover:text-white rounded-none backdrop-blur-sm">
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="h-14 px-8 text-lg border-white/20 hover:bg-white/5 hover:text-white rounded-none backdrop-blur-sm"
+              onClick={() => window.location.href = '/contact'}
+            >
               View Success Stories
             </Button>
           </div>
@@ -120,7 +129,8 @@ export default function Home() {
                   { icon: <Globe />, title: "Strategic Trade Hub", desc: "Global connectivity with Asia, Europe, and Africa." },
                   { icon: <Shield />, title: "Government Support", desc: "Innovation-friendly policies and SME-focused initiatives." },
                   { icon: <TrendingUp />, title: "Tax Efficiency", desc: "Competitive tax regimes and world-class infrastructure." },
-                  { icon: <Building2 />, title: "Economic Growth", desc: "Rapid diversification beyond oil sectors." }
+                  { icon: <Building2 />, title: "Economic Growth", desc: "Rapid diversification beyond oil sectors." },
+                  { icon: <Target />, title: "Consulting", desc: "Chemicals, Digitalization, Sustainability." }
                 ].map((item, i) => (
                   <div key={i} className="p-6 border border-white/10 bg-white/5 hover:bg-white/10 transition-colors">
                     <div className="mb-4 text-primary">{item.icon}</div>
@@ -200,20 +210,21 @@ export default function Home() {
               {
                 name: "Naji Masri",
                 role: "Co-Founder",
-                desc: "20+ years driving innovation leadership across MEA markets, specializing in startup scaling and strategic partnerships."
+                desc: "20+ years driving innovation leadership across MEA markets, specializing in startup scaling and strategic partnerships.",
+                image: "/src/assets/NajiMasriPortraitWhiteBackground.png"
               },
               {
                 name: "Daniel Khayat",
                 role: "Co-Founder",
-                desc: "Deep tech expertise in AI/AR/VR with proven project management and international partnership development experience."
+                desc: "Deep tech expertise in AI/AR/VR with proven project management and international partnership development experience.",
+                image: "/src/assets/DK(1).jpg"
               }
             ].map((member, index) => (
               <div key={index} className="group reveal">
                 <div className="relative mb-6 overflow-hidden border border-white/10 aspect-[4/5]">
                   <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-80 z-10"></div>
-                  {/* Placeholder for team images - using abstract tech images for now */}
                   <img 
-                    src={`/src/assets/portrait-${index + 1}.jpg`} 
+                    src={member.image} 
                     alt={member.name}
                     className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-110"
                   />

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'wouter';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import logoTransparent from '@/assets/logo-with-slogan.png';
+import logoTransparent from '@/assets/logo-white-slogan.png';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -19,7 +19,7 @@ export default function Navbar() {
 
   const navLinks = [
     { name: 'Home', href: '/' },
-    { name: 'Services', href: '/services' },
+    { name: 'XR/VR', href: '/xr-vr' },
     { name: 'About', href: '/about' },
     { name: 'Contact', href: '/contact' },
   ];
