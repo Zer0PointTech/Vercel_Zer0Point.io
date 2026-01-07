@@ -48,8 +48,8 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3 text-muted-foreground">
                 <Mail className="w-5 h-5 text-primary shrink-0" />
-                <a href="mailto:najimasri@zer0point.io" className="hover:text-white transition-colors">
-                  najimasri@zer0point.io
+                <a href="mailto:info@zer0point.io" className="hover:text-white transition-colors">
+                  info@zer0point.io
                 </a>
               </li>
             </ul>
