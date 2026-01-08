@@ -31,9 +31,29 @@ function App() {
   return (
     <ErrorBoundary>
       <ThemeProvider
-        defaultTheme="light"
+        defaultTheme="dark"
         // switchable
       >
+        <div className="background-container">
+          <div className="background-overlay"></div>
+          <div className="tech-lines">
+            <div className="tech-line"></div>
+            <div className="tech-line"></div>
+            <div className="tech-line"></div>
+            <div className="tech-line"></div>
+            <div className="tech-line"></div>
+            <div className="tech-line-vertical"></div>
+            <div className="tech-line-vertical"></div>
+            <div className="tech-line-vertical"></div>
+            <div className="tech-line-vertical"></div>
+            <div className="tech-line-vertical"></div>
+          </div>
+          <div className="floating-shapes">
+            <div className="shape shape-1"></div>
+            <div className="shape shape-2"></div>
+            <div className="shape shape-3"></div>
+          </div>
+        </div>
         <TooltipProvider>
           <Toaster />
           <Router />
