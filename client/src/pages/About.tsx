@@ -9,7 +9,7 @@ export default function About() {
       bio: "An experienced business leader with over 18 years of success in driving growth, sustainability, and digital transformation across the chemical and industrial sectors. Naji has a proven track record of unlocking €300M in growth potential through strategic partnerships and leading executive-level commercial operations. His expertise spans business development, ESG-driven initiatives, and supply chain optimization using AI and digital twins. He is committed to innovation and delivering long-term value in complex global markets.",
       expertise: ["Business Development", "Sustainability & ESG", "Digital Transformation", "Strategic Planning"],
       linkedin: "https://linkedin.com/in/najimasri/",
-      email: "najimasri@gmail.com",
+      email: "najimasri@zer0point.io",
       image: "/images/naji-masri.png"
     },
     {
@@ -18,7 +18,7 @@ export default function About() {
       bio: "A senior leader with 15+ years of experience driving enterprise technology adoption across the MEA region. Daniel specializes in AI, XR, and IoT solutions, having delivered multimillion-dollar wins for major entities like Aramco, NEOM, and STC. Recognized as a Global Sales MVP, he excels in structuring complex deals, building partner ecosystems, and guiding C-suite stakeholders through digital transformation. His deep regional expertise and trilingual capabilities (Arabic, English, French) make him a trusted advisor for government and enterprise clients.",
       expertise: ["AI & XR Sales Strategy", "Enterprise Account Management", "GTM Execution", "Public Sector Engagement"],
       linkedin: "https://linkedin.com/in/danielkhayat",
-      email: "dkhayat@gmail.com",
+      email: "danielkhayat@zer0point.io",
       image: "/images/daniel-khayat.jpg"
     }
   ];
