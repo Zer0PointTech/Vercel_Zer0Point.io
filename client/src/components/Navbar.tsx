@@ -53,13 +53,14 @@ export default function Navbar() {
               {link.name}
             </Link>
           ))}
-          <Button 
-            variant="outline" 
-            className="border-primary/50 text-primary hover:bg-primary hover:text-background transition-all duration-300"
-            onClick={() => setLocation('/contact')}
-          >
-            Get Started
-          </Button>
+          <Link href="/contact">
+            <Button 
+              variant="outline" 
+              className="border-primary/50 text-primary hover:bg-primary hover:text-background transition-all duration-300"
+            >
+              Get Started
+            </Button>
+          </Link>
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -86,15 +87,11 @@ export default function Navbar() {
               {link.name}
             </Link>
           ))}
-          <Button 
-            className="w-full bg-primary text-background hover:bg-primary/90"
-            onClick={() => {
-              setLocation('/contact');
-              setIsMobileMenuOpen(false);
-            }}
-          >
-            Get Started
-          </Button>
+          <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+            <Button className="w-full bg-primary text-background hover:bg-primary/90">
+              Get Started
+            </Button>
+          </Link>
         </div>
       )}
     </nav>

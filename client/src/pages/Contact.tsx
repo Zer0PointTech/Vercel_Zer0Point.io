@@ -72,26 +72,17 @@ export default function Contact() {
                     <MapPin className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <p className="font-bold text-lg mb-1">Our Locations</p>
+                    <p className="font-bold text-lg mb-1">Office: Dubai, UAE</p>
                     <div className="space-y-4 mt-2">
                       <div>
-                        <p className="text-white font-medium">Dubai, UAE</p>
                         <p className="text-muted-foreground">Level 3, Innovation Hub, DIFC</p>
-                      </div>
-                      <div>
-                        <p className="text-white font-medium">Riyadh, KSA</p>
-                        <p className="text-muted-foreground">King Fahd Road, Olaya District</p>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="mt-12 p-6 bg-white/5 rounded-xl border border-white/10">
-                <h4 className="font-bold text-white mb-2">Office Hours</h4>
-                <p className="text-muted-foreground">Monday - Friday: 9:00 AM - 6:00 PM (GST)</p>
-                <p className="text-muted-foreground">Saturday - Sunday: Closed</p>
-              </div>
+
             </div>
 
             {/* Contact Form */}
