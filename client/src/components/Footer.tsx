@@ -4,14 +4,14 @@ import { Twitter, Linkedin, Mail, MapPin } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-background pt-20 pb-10 relative overflow-hidden">
+    <footer className="bg-background pt-20 pb-10 relative overflow-hidden" style={{borderStyle: 'none'}}>
       {/* Background Grid Lines */}
       <div className="absolute inset-0 pointer-events-none opacity-10">
         <div className="absolute left-1/4 top-0 bottom-0 w-px bg-white"></div>
         <div className="absolute right-1/4 top-0 bottom-0 w-px bg-white"></div>
       </div>
 
-      <div className="container relative z-10 border-t border-white/10 pt-20">
+      <div className="container relative z-10 border-t border-white/10 pt-20" style={{borderStyle: 'none'}}>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="col-span-1 md:col-span-2">
             <Link href="/" className="flex items-center gap-2 mb-6">
@@ -64,7 +64,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4" style={{borderStyle: 'none'}}>
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} Zer0Point Tech Ltd. All rights reserved.
           </p>
