@@ -53,7 +53,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-primary selection:text-background">
+    <div className="min-h-screen text-foreground overflow-x-hidden selection:bg-primary selection:text-background">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
         <div className="container relative z-10 text-center">
@@ -97,7 +97,7 @@ export default function Home() {
       </section>
 
       {/* Core Pillars Section */}
-      <section className="py-32 relative border-t border-white/5 bg-white/5">
+      <section className="py-32 relative border-t border-white/5">
         <div className="container">
           <div className="text-center max-w-3xl mx-auto mb-20 reveal">
             <h2 className="font-display font-bold text-4xl md:text-5xl mb-6">Our Core Expertise</h2>

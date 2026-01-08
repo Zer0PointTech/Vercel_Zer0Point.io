@@ -63,7 +63,7 @@ export default function Tech() {
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-primary selection:text-background">
+    <div className="min-h-screen text-foreground overflow-x-hidden selection:bg-primary selection:text-background">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
         <div className="container relative z-10 text-center">
@@ -94,7 +94,7 @@ export default function Tech() {
       </section>
 
       {/* Tech Services Grid */}
-      <section className="py-32 relative bg-white/5">
+      <section className="py-32 relative">
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {techServices.map((service, index) => (
@@ -131,7 +131,7 @@ export default function Tech() {
       </section>
 
       {/* Team Section */}
-      <section className="py-32 relative bg-white/5">
+      <section className="py-32 relative">
         <div className="container">
           <div className="text-center mb-20 reveal">
             <h2 className="font-display font-bold text-4xl md:text-5xl mb-6">Our Expert Team</h2>

@@ -34,7 +34,7 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden font-sans selection:bg-primary/30">
+    <div className="min-h-screen text-foreground overflow-x-hidden font-sans selection:bg-primary/30">
       <main className="pt-32 pb-20">
         <div className="container">
           <div className="max-w-4xl mx-auto text-center mb-16 animate-in fade-in slide-in-from-bottom-10 duration-700">

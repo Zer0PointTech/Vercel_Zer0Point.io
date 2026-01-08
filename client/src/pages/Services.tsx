@@ -103,7 +103,7 @@ export default function Services() {
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-primary selection:text-background">
+    <div className="min-h-screen text-foreground overflow-x-hidden selection:bg-primary selection:text-background">
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div className="container relative z-10 text-center">
@@ -117,7 +117,7 @@ export default function Services() {
       </section>
 
       {/* Services Grid */}
-      <section className="py-20 relative bg-white/5">
+      <section className="py-20 relative">
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {allServices.map((service, index) => (
