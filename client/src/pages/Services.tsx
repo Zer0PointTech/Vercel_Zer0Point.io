@@ -105,7 +105,7 @@ export default function Services() {
   return (
     <div className="min-h-screen text-foreground overflow-x-hidden selection:bg-primary selection:text-background">
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 overflow-hidden">
+      <section className="relative pt-40 pb-20 overflow-hidden">
         <div className="container relative z-10 text-center">
           <h1 className="font-display font-bold text-5xl md:text-7xl tracking-tight mb-6 reveal">
             Comprehensive <span className="text-gradient">Services</span>

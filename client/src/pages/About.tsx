@@ -9,7 +9,8 @@ export default function About() {
       bio: "An experienced business leader with over 18 years of success in driving growth, sustainability, and digital transformation across the chemical and industrial sectors. Naji has a proven track record of unlocking €300M in growth potential through strategic partnerships and leading executive-level commercial operations. His expertise spans business development, ESG-driven initiatives, and supply chain optimization using AI and digital twins. He is committed to innovation and delivering long-term value in complex global markets.",
       expertise: ["Business Development", "Sustainability & ESG", "Digital Transformation", "Strategic Planning"],
       linkedin: "https://linkedin.com/in/najimasri/",
-      email: "najimasri@gmail.com"
+      email: "najimasri@gmail.com",
+      image: "/images/naji-masri.png"
     },
     {
       name: "Daniel Khayat",
@@ -17,12 +18,13 @@ export default function About() {
       bio: "A senior leader with 15+ years of experience driving enterprise technology adoption across the MEA region. Daniel specializes in AI, XR, and IoT solutions, having delivered multimillion-dollar wins for major entities like Aramco, NEOM, and STC. Recognized as a Global Sales MVP, he excels in structuring complex deals, building partner ecosystems, and guiding C-suite stakeholders through digital transformation. His deep regional expertise and trilingual capabilities (Arabic, English, French) make him a trusted advisor for government and enterprise clients.",
       expertise: ["AI & XR Sales Strategy", "Enterprise Account Management", "GTM Execution", "Public Sector Engagement"],
       linkedin: "https://linkedin.com/in/danielkhayat",
-      email: "dkhayat@gmail.com"
+      email: "dkhayat@gmail.com",
+      image: "/images/daniel-khayat.jpg"
     }
   ];
 
   return (
-    <div className="min-h-screen pt-32 pb-20">
+    <div className="min-h-screen pt-40 pb-20">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -50,11 +52,12 @@ export default function About() {
               <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
               
               <div className="relative z-10">
-                <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-white/10 border-2 border-primary/20 flex items-center justify-center overflow-hidden">
-                  {/* Placeholder for profile image - can be replaced with actual images later */}
-                  <span className="text-4xl font-display font-bold text-primary/50">
-                    {member.name.charAt(0)}
-                  </span>
+                <div className="w-40 h-40 mx-auto mb-6 rounded-full bg-white/10 border-2 border-primary/20 flex items-center justify-center overflow-hidden relative group-hover:border-primary/50 transition-colors duration-300">
+                  <img 
+                    src={member.image} 
+                    alt={member.name}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
                 </div>
 
                 <h3 className="text-2xl font-display font-bold text-center mb-2">{member.name}</h3>
