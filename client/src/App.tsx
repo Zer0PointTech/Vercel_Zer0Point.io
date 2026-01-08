@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Services from "./pages/Services";
 import Tech from "./pages/Tech";
 import Contact from "./pages/Contact";
+import About from "./pages/About";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
@@ -19,6 +20,7 @@ function Router() {
       <Route path={"/services"} component={Services} />
       <Route path={"/tech"} component={Tech} />
       <Route path={"/contact"} component={Contact} />
+      <Route path={"/about"} component={About} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
