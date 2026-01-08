@@ -7,7 +7,7 @@ import logoTransparent from '@/assets/logo-white-slogan.png';
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [location] = useLocation();
+  const [location, setLocation] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -53,7 +53,11 @@ export default function Navbar() {
               {link.name}
             </Link>
           ))}
-          <Button variant="outline" className="border-primary/50 text-primary hover:bg-primary hover:text-background transition-all duration-300">
+          <Button 
+            variant="outline" 
+            className="border-primary/50 text-primary hover:bg-primary hover:text-background transition-all duration-300"
+            onClick={() => setLocation('/contact')}
+          >
             Get Started
           </Button>
         </div>
@@ -82,7 +86,13 @@ export default function Navbar() {
               {link.name}
             </Link>
           ))}
-          <Button className="w-full bg-primary text-background hover:bg-primary/90">
+          <Button 
+            className="w-full bg-primary text-background hover:bg-primary/90"
+            onClick={() => {
+              setLocation('/contact');
+              setIsMobileMenuOpen(false);
+            }}
+          >
             Get Started
           </Button>
         </div>

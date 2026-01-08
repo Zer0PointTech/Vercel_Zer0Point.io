@@ -169,7 +169,7 @@ export default function Home() {
             <div className="relative reveal">
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent blur-3xl"></div>
               <img 
-                src="/src/assets/dubai-skyline.jpg" 
+                src="/images/dubai-skyline.jpg" 
                 alt="Dubai Skyline" 
                 loading="lazy"
                 className="relative z-10 w-full h-auto grayscale hover:grayscale-0 transition-all duration-700 border border-white/10 shadow-2xl"
