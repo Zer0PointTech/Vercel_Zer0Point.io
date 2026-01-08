@@ -3,8 +3,7 @@ import { useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Building2, TrendingUp, Handshake, Languages, Target, Briefcase, CheckCircle, ArrowRight, Shield, Globe } from 'lucide-react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+
 
 export default function Services() {
   const [, setLocation] = useLocation();
@@ -105,8 +104,6 @@ export default function Services() {
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-primary selection:text-background">
-      <Navbar />
-
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div className="container relative z-10 text-center">
@@ -164,7 +161,6 @@ export default function Services() {
         </div>
       </section>
 
-      <Footer />
     </div>
   );
 }

@@ -3,8 +3,7 @@ import { useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Glasses, Smartphone, Globe, Gamepad2, Building, Sparkles, ArrowRight } from 'lucide-react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+
 
 export default function Tech() {
   const [, setLocation] = useLocation();
@@ -65,8 +64,6 @@ export default function Tech() {
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-primary selection:text-background">
-      <Navbar />
-
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
         <div className="container relative z-10 text-center">
@@ -177,7 +174,6 @@ export default function Tech() {
         </div>
       </section>
 
-      <Footer />
     </div>
   );
 }

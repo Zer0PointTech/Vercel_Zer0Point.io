@@ -8,6 +8,8 @@ import Home from "./pages/Home";
 import Services from "./pages/Services";
 import Tech from "./pages/Tech";
 import Contact from "./pages/Contact";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 
 function Router() {
@@ -58,8 +60,12 @@ function App() {
         </div>
         <TooltipProvider>
           <Toaster />
-          <div className="relative z-10">
-            <Router />
+          <div className="relative z-10 flex flex-col min-h-screen">
+            <Navbar />
+            <main className="flex-grow">
+              <Router />
+            </main>
+            <Footer />
           </div>
         </TooltipProvider>
       </ThemeProvider>
