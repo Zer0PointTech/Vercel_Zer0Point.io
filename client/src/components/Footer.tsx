@@ -36,8 +36,8 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-display font-bold text-white mb-6">Contact</h4>
-            <ul className="space-y-4">
+            <h4 className="font-display font-bold text-white mb-8">Contact</h4>
+            <ul className="space-y-6">
               <li className="flex items-start gap-3 text-muted-foreground">
                 <MapPin className="w-5 h-5 text-primary shrink-0 mt-1" />
                 <span>Level 3, Innovation Hub,<br />DIFC, Dubai, UAE</span>
