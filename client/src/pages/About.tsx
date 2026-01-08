@@ -33,7 +33,7 @@ export default function About() {
           className="max-w-4xl mx-auto text-center mb-20"
         >
           <h1 className="text-4xl md:text-6xl font-display font-bold mb-6">
-            Meet Our <span className="text-primary">Leadership</span>
+            Meet the <span className="text-primary">Team</span>
           </h1>
           <p className="text-xl text-muted-foreground">
             Decades of combined experience in driving growth, innovation, and digital transformation across the GCC and beyond.
