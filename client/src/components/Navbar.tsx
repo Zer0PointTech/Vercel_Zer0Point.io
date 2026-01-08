@@ -19,8 +19,8 @@ export default function Navbar() {
 
   const navLinks = [
     { name: 'Home', href: '/' },
-    { name: 'XR/VR', href: '/xr-vr' },
-    { name: 'About', href: '/about' },
+    { name: 'Services', href: '/services' },
+    { name: 'Tech', href: '/tech' },
     { name: 'Contact', href: '/contact' },
   ];
 

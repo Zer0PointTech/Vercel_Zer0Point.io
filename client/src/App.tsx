@@ -5,7 +5,8 @@ import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
-import XRVR from "./pages/XRVR";
+import Services from "./pages/Services";
+import Tech from "./pages/Tech";
 import Contact from "./pages/Contact";
 
 
@@ -13,7 +14,8 @@ function Router() {
   return (
     <Switch>
       <Route path={"/"} component={Home} />
-      <Route path={"/xr-vr"} component={XRVR} />
+      <Route path={"/services"} component={Services} />
+      <Route path={"/tech"} component={Tech} />
       <Route path={"/contact"} component={Contact} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
