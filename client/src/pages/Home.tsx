@@ -171,6 +171,7 @@ export default function Home() {
               <img 
                 src="/src/assets/dubai-skyline.jpg" 
                 alt="Dubai Skyline" 
+                loading="lazy"
                 className="relative z-10 w-full h-auto grayscale hover:grayscale-0 transition-all duration-700 border border-white/10 shadow-2xl"
               />
             </div>
