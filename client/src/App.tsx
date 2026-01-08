@@ -56,7 +56,9 @@ function App() {
         </div>
         <TooltipProvider>
           <Toaster />
-          <Router />
+          <div className="relative z-10">
+            <Router />
+          </div>
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>
