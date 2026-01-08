@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Glasses, Smartphone, Globe, Gamepad2, Building, Sparkles, ArrowRight } from 'lucide-react';
@@ -6,6 +7,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 export default function Tech() {
+  const [, setLocation] = useLocation();
   const observerRef = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
@@ -86,7 +88,7 @@ export default function Tech() {
             <Button 
               size="lg" 
               className="h-14 px-8 text-lg bg-primary text-background hover:bg-primary/90 rounded-none border border-primary/50 shadow-[0_0_20px_rgba(var(--primary),0.3)] transition-all hover:shadow-[0_0_40px_rgba(var(--primary),0.5)]"
-              onClick={() => window.location.href = '/contact'}
+              onClick={() => setLocation('/contact')}
             >
               Get In Touch <ArrowRight className="ml-2 w-5 h-5" />
             </Button>

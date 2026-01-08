@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRight, Globe, TrendingUp, Building2, CheckCircle, Target, Handshake, Briefcase, BarChart3 } from 'lucide-react';
@@ -6,6 +7,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 export default function Home() {
+  const [, setLocation] = useLocation();
   const observerRef = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
@@ -76,7 +78,7 @@ export default function Home() {
             <Button 
               size="lg" 
               className="h-14 px-8 text-lg bg-primary text-background hover:bg-primary/90 rounded-none border border-primary/50 shadow-[0_0_20px_rgba(var(--primary),0.3)] transition-all hover:shadow-[0_0_40px_rgba(var(--primary),0.5)]"
-              onClick={() => window.location.href = '/contact'}
+              onClick={() => setLocation('/contact')}
             >
               Start Your Journey <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
@@ -84,7 +86,7 @@ export default function Home() {
               variant="outline" 
               size="lg" 
               className="h-14 px-8 text-lg border-white/20 hover:bg-white/5 hover:text-white rounded-none backdrop-blur-sm"
-              onClick={() => window.location.href = '/services'}
+              onClick={() => setLocation('/services')}
             >
               View All Services
             </Button>
@@ -187,7 +189,7 @@ export default function Home() {
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <Button size="lg" className="h-16 px-10 text-xl bg-white text-background hover:bg-gray-200 rounded-none border-0 shadow-xl transition-transform hover:-translate-y-1" onClick={() => window.location.href = '/contact'}>
+            <Button size="lg" className="h-16 px-10 text-xl bg-white text-background hover:bg-gray-200 rounded-none border-0 shadow-xl transition-transform hover:-translate-y-1" onClick={() => setLocation('/contact')}>
               Schedule a Consultation
             </Button>
           </div>

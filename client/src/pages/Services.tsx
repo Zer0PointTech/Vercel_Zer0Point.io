@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Building2, TrendingUp, Handshake, Languages, Target, Briefcase, CheckCircle, ArrowRight, Shield, Globe } from 'lucide-react';
@@ -6,6 +7,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 export default function Services() {
+  const [, setLocation] = useLocation();
   const observerRef = useRef<IntersectionObserver | null>(null);
 
   useEffect(() => {
@@ -156,7 +158,7 @@ export default function Services() {
             Don't see exactly what you need? We customize our engagement models to fit your specific goals and requirements.
           </p>
           
-          <Button size="lg" className="h-16 px-10 text-xl bg-primary text-background hover:bg-primary/90 rounded-none border border-primary/50 shadow-xl" onClick={() => window.location.href = '/contact'}>
+          <Button size="lg" className="h-16 px-10 text-xl bg-primary text-background hover:bg-primary/90 rounded-none border border-primary/50 shadow-xl" onClick={() => setLocation('/contact')}>
             Get a Custom Proposal <ArrowRight className="ml-2 w-5 h-5" />
           </Button>
         </div>
