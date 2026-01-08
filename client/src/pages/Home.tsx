@@ -55,7 +55,7 @@ export default function Home() {
   return (
     <div className="min-h-screen text-foreground overflow-x-hidden selection:bg-primary selection:text-background">
       {/* Hero Section */}
-      <section className="relative min-h-screen pt-40 overflow-hidden">
+      <section className="relative pt-40 pb-20 overflow-hidden">
         <div className="container relative z-10 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-8 reveal">
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
@@ -88,11 +88,6 @@ export default function Home() {
               View All Services
             </Button>
           </div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-muted-foreground">
-          <div className="w-px h-16 bg-gradient-to-b from-transparent via-primary to-transparent"></div>
         </div>
       </section>
 
