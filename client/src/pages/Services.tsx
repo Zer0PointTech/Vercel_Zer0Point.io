@@ -65,7 +65,9 @@ export default function Services() {
         "Mainland vs. Free Zone Advisory",
         "Government Relations (PRO Services)",
         "License & Permit Acquisition",
-        "Office Space Solutions"
+        "Office Space Solutions",
+        "Visa & Residency Support",
+        "Local Sponsorship Arrangement"
       ]
     },
     {
@@ -133,7 +135,7 @@ export default function Services() {
                   <CardTitle className="font-display text-2xl text-white">{service.title}</CardTitle>
                 </CardHeader>
                 <CardContent className="flex-grow flex flex-col justify-start">
-                  <p className="text-muted-foreground mb-6 min-h-[120px]">{service.description}</p>
+                  <p className="text-muted-foreground mb-2 min-h-[90px]">{service.description}</p>
                   <div>
                     <ul className="space-y-3">
                       {service.features.map((feature, idx) => (
