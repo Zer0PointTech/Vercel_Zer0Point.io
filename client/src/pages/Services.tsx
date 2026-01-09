@@ -37,7 +37,9 @@ export default function Services() {
         "Key Account Management",
         "Lead Generation & Qualification",
         "Reseller & JV Vetting",
-        "Sales Cycle Orchestration"
+        "Sales Cycle Orchestration",
+        "Accelerated Market Entry",
+        "High-Value Deal Structuring"
       ]
     },
     {
@@ -49,7 +51,9 @@ export default function Services() {
         "Digital Transformation Roadmaps",
         "Sustainability & ESG Consulting",
         "Competitor Analysis & Benchmarking",
-        "Supply Chain Optimization"
+        "Supply Chain Optimization",
+        "AI & Digital Twin Strategy",
+        "Cross-Border Expansion Strategy"
       ]
     },
     {

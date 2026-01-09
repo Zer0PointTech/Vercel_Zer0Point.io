@@ -36,7 +36,9 @@ export default function Home() {
         "Unlocked €300M+ growth potential through strategic partnerships with top regional key accounts.",
         "Led end-to-end enterprise sales cycles for multimillion-dollar program wins (Aramco, NEOM, STC).",
         "Built and scaled channel ecosystems (SIs/ISVs/Distributors) to accelerate solution adoption.",
-        "Orchestrated cross-functional teams to shorten deal cycles and improve win rates."
+        "Orchestrated cross-functional teams to shorten deal cycles and improve win rates.",
+        "Accelerated Market Entry: Rapidly establish local presence and regulatory compliance to shorten time-to-revenue in Saudi Arabia and UAE.",
+        "High-Value Deal Structuring: Architect complex, multi-stakeholder commercial agreements that secure long-term recurring revenue streams."
       ]
     },
     {
@@ -47,7 +49,9 @@ export default function Home() {
         "Advised on specialty chemical entry strategies and conducted competitor diversification studies.",
         "Developed industry-focused restructuring approaches to improve customer focus and operational resilience.",
         "Led sustainability initiatives including circular economy models and ESG compliance frameworks.",
-        "Designed partner development programs for global tech giants (Microsoft, HP, Dell) across the region."
+        "Designed partner development programs for global tech giants (Microsoft, HP, Dell) across the region.",
+        "AI & Digital Twin Strategy: Define actionable roadmaps for adopting Industrial AI and Digital Twins to optimize asset performance and reduce costs.",
+        "Cross-Border Expansion Strategy: Data-driven market analysis to identify and capture high-yield opportunities in emerging and established global markets."
       ]
     }
   ];
