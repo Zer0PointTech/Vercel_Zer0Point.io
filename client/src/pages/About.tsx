@@ -6,7 +6,7 @@ export default function About() {
     {
       name: "Naji Masri",
       role: "Managing Partner",
-      bio: "An experienced business leader with over 18 years of success in driving growth, sustainability, and digital transformation across the chemical and industrial sectors. Naji has a proven track record of unlocking €300M in growth potential through strategic partnerships and leading executive-level commercial operations. His expertise spans business development, ESG-driven initiatives, and supply chain optimization using AI and digital twins. He is committed to innovation and delivering long-term value in complex global markets.",
+      bio: "An experienced business leader with over 18 years of success in driving growth, sustainability, and digital transformation across the chemical and industrial sectors. Naji has a proven track record of unlocking $300M in growth potential through strategic partnerships and leading executive-level commercial operations. His expertise spans business development, ESG-driven initiatives, and supply chain optimization using AI and digital twins. He is committed to innovation and delivering long-term value in complex global markets.",
       expertise: ["Business Development", "Sustainability & ESG", "Digital Transformation", "Strategic Planning"],
       linkedin: "https://linkedin.com/in/najimasri/",
       email: "najimasri@zer0point.io",

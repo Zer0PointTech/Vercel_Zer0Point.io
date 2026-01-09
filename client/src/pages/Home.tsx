@@ -33,7 +33,7 @@ export default function Home() {
       title: "Business Development",
       description: "Driving growth through strategic partnerships, market penetration, and ecosystem building across the MEA region.",
       examples: [
-        "Unlocked €300M+ growth potential through strategic partnerships with top regional key accounts.",
+        "Unlocked $300M+ growth potential through strategic partnerships with top regional key accounts.",
         "Led end-to-end enterprise sales cycles for multimillion-dollar program wins (Aramco, NEOM, STC).",
         "Built and scaled channel ecosystems (SIs/ISVs/Distributors) to accelerate solution adoption.",
         "Orchestrated cross-functional teams to shorten deal cycles and improve win rates.",
