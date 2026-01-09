@@ -93,6 +93,14 @@ export default function WorkExamples() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Safety Library */}
             <Card className="glass-card border-white/10 bg-transparent reveal group h-full flex flex-col">
+              <div className="relative h-64 w-full overflow-hidden rounded-t-xl border-b border-white/10">
+                <img 
+                  src="https://zer0point.io/MarketingPack/VR%20LIBRARY/VR%20Safety%20Library.png" 
+                  alt="VR Safety Library"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent" />
+              </div>
               <CardHeader>
                 <div className="mb-4 p-3 bg-white/5 w-fit rounded-lg group-hover:bg-primary/20 transition-colors duration-300">
                   <ShieldCheck className="w-10 h-10 text-primary" />
@@ -113,6 +121,14 @@ export default function WorkExamples() {
 
             {/* Soft Skills Library */}
             <Card className="glass-card border-white/10 bg-transparent reveal group h-full flex flex-col">
+              <div className="relative h-64 w-full overflow-hidden rounded-t-xl border-b border-white/10">
+                <img 
+                  src="https://zer0point.io/MarketingPack/VR%20LIBRARY/VR%20Soft%20Skills%20Library.png" 
+                  alt="VR Soft Skills Library"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent" />
+              </div>
               <CardHeader>
                 <div className="mb-4 p-3 bg-white/5 w-fit rounded-lg group-hover:bg-primary/20 transition-colors duration-300">
                   <BrainCircuit className="w-10 h-10 text-primary" />
@@ -175,11 +191,25 @@ export default function WorkExamples() {
             From confined space training to complex industrial simulations, our gallery showcases the depth and breadth of our immersive learning solutions.
           </p>
           
-          <div className="flex flex-wrap justify-center gap-4">
-            {["Safety Training Demos", "Immersive Learning", "Confined Spaces", "Industrial Training", "Corporate Training"].map((tag, idx) => (
-              <span key={idx} className="px-6 py-3 rounded-full bg-white/5 border border-white/10 text-sm font-medium text-white">
-                {tag}
-              </span>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {[
+              "https://zer0point.io/MarketingPack/VR%20PHOTOS/People%20in%20VR/2.jpg",
+              "https://zer0point.io/MarketingPack/VR%20PHOTOS/People%20in%20VR/3.jpg",
+              "https://zer0point.io/MarketingPack/VR%20PHOTOS/People%20in%20VR/4.jpg",
+              "https://zer0point.io/MarketingPack/VR%20PHOTOS/People%20in%20VR/5.jpg",
+              "https://zer0point.io/MarketingPack/VR%20Screenshots/Safety%20Skills/Fire%20Extinguisher/image.png",
+              "https://zer0point.io/MarketingPack/VR%20Screenshots/Safety%20Skills/Working%20at%20Heights/image.png"
+            ].map((src, idx) => (
+              <div key={idx} className="group relative aspect-video rounded-xl overflow-hidden border border-white/10 bg-white/5">
+                <img 
+                  src={src} 
+                  alt={`VR Experience ${idx + 1}`}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                  <span className="text-white font-medium">View Experience</span>
+                </div>
+              </div>
             ))}
           </div>
         </div>
