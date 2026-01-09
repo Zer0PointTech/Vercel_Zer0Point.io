@@ -92,21 +92,34 @@ const FORGE_BASE_URL =
   "https://forge.butterfly-effect.dev";
 const MAPS_PROXY_URL = `${FORGE_BASE_URL}/v1/maps/proxy`;
 
+// Singleton promise to ensure script is loaded only once
+let loadScriptPromise: Promise<void> | null = null;
+
 function loadMapScript() {
-  return new Promise(resolve => {
-    const script = document.createElement("script");
-    script.src = `${MAPS_PROXY_URL}/maps/api/js?key=${API_KEY}&v=weekly&libraries=marker,places,geocoding,geometry`;
-    script.async = true;
-    script.crossOrigin = "anonymous";
-    script.onload = () => {
-      resolve(null);
-      script.remove(); // Clean up immediately
-    };
-    script.onerror = () => {
-      console.error("Failed to load Google Maps script");
-    };
-    document.head.appendChild(script);
-  });
+  if (window.google?.maps) {
+    return Promise.resolve();
+  }
+  
+  if (!loadScriptPromise) {
+    loadScriptPromise = new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      script.src = `${MAPS_PROXY_URL}/maps/api/js?key=${API_KEY}&v=weekly&libraries=marker,places,geocoding,geometry`;
+      script.async = true;
+      script.crossOrigin = "anonymous";
+      script.onload = () => {
+        resolve();
+        // Don't remove script as other components might need it
+      };
+      script.onerror = () => {
+        console.error("Failed to load Google Maps script");
+        loadScriptPromise = null; // Reset promise on error so we can try again
+        reject(new Error("Failed to load Google Maps script"));
+      };
+      document.head.appendChild(script);
+    });
+  }
+  
+  return loadScriptPromise;
 }
 
 interface MapViewProps {
@@ -126,22 +139,32 @@ export function MapView({
   const map = useRef<google.maps.Map | null>(null);
 
   const init = usePersistFn(async () => {
-    await loadMapScript();
-    if (!mapContainer.current) {
-      console.error("Map container not found");
-      return;
-    }
-    map.current = new window.google.maps.Map(mapContainer.current, {
-      zoom: initialZoom,
-      center: initialCenter,
-      mapTypeControl: true,
-      fullscreenControl: true,
-      zoomControl: true,
-      streetViewControl: true,
-      mapId: "DEMO_MAP_ID",
-    });
-    if (onMapReady) {
-      onMapReady(map.current);
+    try {
+      await loadMapScript();
+      
+      if (!mapContainer.current) {
+        console.error("Map container not found");
+        return;
+      }
+      
+      // Prevent re-initialization if map already exists
+      if (map.current) return;
+
+      map.current = new window.google.maps.Map(mapContainer.current, {
+        zoom: initialZoom,
+        center: initialCenter,
+        mapTypeControl: true,
+        fullscreenControl: true,
+        zoomControl: true,
+        streetViewControl: true,
+        mapId: "DEMO_MAP_ID",
+      });
+      
+      if (onMapReady) {
+        onMapReady(map.current);
+      }
+    } catch (error) {
+      console.error("Error initializing map:", error);
     }
   });
 
