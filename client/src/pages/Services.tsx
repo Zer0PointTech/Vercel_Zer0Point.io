@@ -134,7 +134,7 @@ export default function Services() {
                 </CardHeader>
                 <CardContent className="flex-grow flex flex-col">
                   <p className="text-muted-foreground mb-6 min-h-[110px]">{service.description}</p>
-                  <div className="mt-auto">
+                  <div>
                     <ul className="space-y-3">
                       {service.features.map((feature, idx) => (
                         <li key={idx} className="flex items-start text-sm text-gray-300">
