@@ -89,6 +89,14 @@ export default function Tech() {
             >
               Get In Touch <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
+            <Button 
+              size="lg" 
+              variant="outline"
+              className="h-14 px-8 text-lg text-white hover:bg-white/10 rounded-none border border-white/20"
+              onClick={() => setLocation('/tech/work-examples')}
+            >
+              View Work Examples
+            </Button>
           </div>
         </div>
       </section>
