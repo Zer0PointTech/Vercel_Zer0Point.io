@@ -1,10 +1,11 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { HardHat, Users, Truck, Flame, Zap, Building, MonitorPlay, ShieldCheck, BrainCircuit } from 'lucide-react';
+import { HardHat, Users, Truck, Flame, Zap, Building, MonitorPlay, ShieldCheck, BrainCircuit, X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export default function WorkExamples() {
   const observerRef = useRef<IntersectionObserver | null>(null);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   useEffect(() => {
     observerRef.current = new IntersectionObserver((entries) => {
@@ -23,6 +24,44 @@ export default function WorkExamples() {
 
     return () => observerRef.current?.disconnect();
   }, []);
+
+  const galleryImages = [
+    "https://zer0point.io/MarketingPack/VR%20PHOTOS/People%20in%20VR/2.jpg",
+    "https://zer0point.io/MarketingPack/VR%20PHOTOS/People%20in%20VR/3.jpg",
+    "https://zer0point.io/MarketingPack/VR%20PHOTOS/People%20in%20VR/4.jpg",
+    "https://zer0point.io/MarketingPack/VR%20PHOTOS/People%20in%20VR/5.jpg",
+    "https://zer0point.io/MarketingPack/VR%20Screenshots/Safety%20Skills/Fire%20Extinguisher/image.png",
+    "https://zer0point.io/MarketingPack/VR%20Screenshots/Safety%20Skills/Working%20at%20Heights/image.png"
+  ];
+
+  const nextImage = useCallback((e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    if (lightboxIndex !== null) {
+      setLightboxIndex((prev) => (prev === null ? null : (prev + 1) % galleryImages.length));
+    }
+  }, [lightboxIndex, galleryImages.length]);
+
+  const prevImage = useCallback((e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    if (lightboxIndex !== null) {
+      setLightboxIndex((prev) => (prev === null ? null : (prev - 1 + galleryImages.length) % galleryImages.length));
+    }
+  }, [lightboxIndex, galleryImages.length]);
+
+  const closeLightbox = useCallback(() => {
+    setLightboxIndex(null);
+  }, []);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (lightboxIndex === null) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') nextImage();
+      if (e.key === 'ArrowLeft') prevImage();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [lightboxIndex, closeLightbox, nextImage, prevImage]);
 
   const safetyModules = [
     "Hand Safety", "Hazard Identification", "Manual Handling", "Working Around Forklifts",
@@ -153,7 +192,7 @@ export default function WorkExamples() {
         </div>
       </section>
 
-      {/* Experience Gallery Section (Moved Up) */}
+      {/* Experience Gallery Section */}
       <section className="py-20 relative overflow-hidden bg-white/5">
         <div className="container relative z-10 text-center reveal">
           <div className="inline-flex items-center justify-center p-4 rounded-full bg-primary/10 mb-8">
@@ -165,22 +204,21 @@ export default function WorkExamples() {
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {[
-              "https://zer0point.io/MarketingPack/VR%20PHOTOS/People%20in%20VR/2.jpg",
-              "https://zer0point.io/MarketingPack/VR%20PHOTOS/People%20in%20VR/3.jpg",
-              "https://zer0point.io/MarketingPack/VR%20PHOTOS/People%20in%20VR/4.jpg",
-              "https://zer0point.io/MarketingPack/VR%20PHOTOS/People%20in%20VR/5.jpg",
-              "https://zer0point.io/MarketingPack/VR%20Screenshots/Safety%20Skills/Fire%20Extinguisher/image.png",
-              "https://zer0point.io/MarketingPack/VR%20Screenshots/Safety%20Skills/Working%20at%20Heights/image.png"
-            ].map((src, idx) => (
-              <div key={idx} className="group relative aspect-video rounded-xl overflow-hidden border border-white/10 bg-white/5">
+            {galleryImages.map((src, idx) => (
+              <div 
+                key={idx} 
+                className="group relative aspect-video rounded-xl overflow-hidden border border-white/10 bg-white/5 cursor-pointer"
+                onClick={() => setLightboxIndex(idx)}
+              >
                 <img 
                   src={src} 
                   alt={`VR Experience ${idx + 1}`}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                  <span className="text-white font-medium">View Experience</span>
+                  <span className="text-white font-medium flex items-center gap-2">
+                    <MonitorPlay className="w-4 h-4" /> View Experience
+                  </span>
                 </div>
               </div>
             ))}
@@ -188,7 +226,7 @@ export default function WorkExamples() {
         </div>
       </section>
 
-      {/* Training Categories Grid (Moved Down) */}
+      {/* Training Categories Grid */}
       <section className="py-20 relative">
         <div className="container">
           <div className="text-center mb-16 reveal">
@@ -217,6 +255,49 @@ export default function WorkExamples() {
           </div>
         </div>
       </section>
+
+      {/* Lightbox Overlay */}
+      {lightboxIndex !== null && (
+        <div 
+          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-200"
+          onClick={closeLightbox}
+        >
+          <button 
+            onClick={closeLightbox}
+            className="absolute top-4 right-4 p-2 text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-colors"
+          >
+            <X className="w-8 h-8" />
+          </button>
+
+          <button 
+            onClick={prevImage}
+            className="absolute left-4 top-1/2 -translate-y-1/2 p-3 text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-colors hidden md:block"
+          >
+            <ChevronLeft className="w-10 h-10" />
+          </button>
+
+          <button 
+            onClick={nextImage}
+            className="absolute right-4 top-1/2 -translate-y-1/2 p-3 text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-colors hidden md:block"
+          >
+            <ChevronRight className="w-10 h-10" />
+          </button>
+
+          <div 
+            className="relative max-w-7xl max-h-[90vh] w-full flex items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img 
+              src={galleryImages[lightboxIndex]} 
+              alt={`Gallery Image ${lightboxIndex + 1}`}
+              className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl"
+            />
+            <div className="absolute bottom-[-3rem] left-0 right-0 text-center text-white/70">
+              Image {lightboxIndex + 1} of {galleryImages.length}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
