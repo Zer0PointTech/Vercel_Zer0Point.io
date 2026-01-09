@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { HardHat, Users, Truck, Flame, Zap, Building, MonitorPlay, ShieldCheck, BrainCircuit, GraduationCap } from 'lucide-react';
+import { HardHat, Users, Truck, Flame, Zap, Building, MonitorPlay, ShieldCheck, BrainCircuit } from 'lucide-react';
 
 export default function WorkExamples() {
   const observerRef = useRef<IntersectionObserver | null>(null);
@@ -90,6 +90,9 @@ export default function WorkExamples() {
       {/* VR Libraries Section */}
       <section className="py-20 relative">
         <div className="container">
+          <div className="text-center mb-16 reveal">
+            <h2 className="font-display font-bold text-4xl mb-4">VR Training Libraries</h2>
+          </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Safety Library */}
             <Card className="glass-card border-white/10 bg-transparent reveal group h-full flex flex-col">
@@ -150,38 +153,8 @@ export default function WorkExamples() {
         </div>
       </section>
 
-      {/* Training Categories Grid */}
-      <section className="py-20 relative bg-white/5">
-        <div className="container">
-          <div className="text-center mb-16 reveal">
-            <h2 className="font-display font-bold text-4xl mb-4">Training Categories</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Specialized training tracks tailored to specific industry needs and operational requirements.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {categories.map((category, index) => (
-              <Card key={index} className="glass-card border-white/10 bg-transparent reveal group hover:border-primary/50 transition-all duration-300">
-                <CardHeader>
-                  <div className="mb-4 p-3 bg-white/5 w-fit rounded-lg group-hover:bg-primary/20 transition-colors duration-300">
-                    {category.icon}
-                  </div>
-                  <CardTitle className="font-display text-xl text-white">{category.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {category.description}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Experience Gallery Teaser */}
-      <section className="py-20 relative overflow-hidden">
+      {/* Experience Gallery Section (Moved Up) */}
+      <section className="py-20 relative overflow-hidden bg-white/5">
         <div className="container relative z-10 text-center reveal">
           <div className="inline-flex items-center justify-center p-4 rounded-full bg-primary/10 mb-8">
             <MonitorPlay className="w-8 h-8 text-primary" />
@@ -210,6 +183,36 @@ export default function WorkExamples() {
                   <span className="text-white font-medium">View Experience</span>
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Training Categories Grid (Moved Down) */}
+      <section className="py-20 relative">
+        <div className="container">
+          <div className="text-center mb-16 reveal">
+            <h2 className="font-display font-bold text-4xl mb-4">Training Categories</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Specialized training tracks tailored to specific industry needs and operational requirements.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {categories.map((category, index) => (
+              <Card key={index} className="glass-card border-white/10 bg-transparent reveal group hover:border-primary/50 transition-all duration-300">
+                <CardHeader>
+                  <div className="mb-4 p-3 bg-white/5 w-fit rounded-lg group-hover:bg-primary/20 transition-colors duration-300">
+                    {category.icon}
+                  </div>
+                  <CardTitle className="font-display text-xl text-white">{category.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {category.description}
+                  </p>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
