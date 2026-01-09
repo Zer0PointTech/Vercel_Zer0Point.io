@@ -67,7 +67,7 @@ export default function Services() {
         "License & Permit Acquisition",
         "Office Space Solutions",
         "Visa & Residency Support",
-        "Local Sponsorship Arrangement"
+        "Relocation Support"
       ]
     },
     {
