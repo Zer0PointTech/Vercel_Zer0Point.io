@@ -107,18 +107,18 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
             {pillars.map((pillar, index) => (
-              <Card key={index} className="glass-card border-white/10 bg-transparent reveal group h-full">
-                <CardHeader className="pb-2">
+              <Card key={index} className="glass-card border-white/10 bg-transparent reveal group h-full flex flex-col">
+                <CardHeader className="pb-2 flex-none">
                   <div className="mb-6 p-4 bg-white/5 w-fit rounded-xl group-hover:bg-primary/20 transition-colors duration-500">
                     {pillar.icon}
                   </div>
                   <CardTitle className="font-display text-3xl text-white mb-4">{pillar.title}</CardTitle>
-                  <p className="text-lg text-muted-foreground leading-relaxed">{pillar.description}</p>
+                  <p className="text-lg text-muted-foreground leading-relaxed min-h-[84px]">{pillar.description}</p>
                 </CardHeader>
-                <CardContent className="pt-6">
-                  <div className="space-y-4">
+                <CardContent className="pt-6 flex-grow">
+                  <div className="space-y-4 h-full flex flex-col">
                     <h4 className="text-sm font-semibold text-primary uppercase tracking-wider">Key Achievements & Capabilities</h4>
-                    <ul className="space-y-4">
+                    <ul className="space-y-4 flex-grow">
                       {pillar.examples.map((example, idx) => (
                         <li key={idx} className="flex items-start text-gray-300 group/item">
                           <CheckCircle className="w-5 h-5 text-primary mr-3 shrink-0 mt-1 group-hover/item:text-white transition-colors" />

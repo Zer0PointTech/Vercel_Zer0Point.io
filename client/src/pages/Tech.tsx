@@ -97,8 +97,23 @@ export default function Tech() {
       <section className="py-32 relative">
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {techServices.map((service, index) => (
+            {techServices.slice(0, 3).map((service, index) => (
               <Card key={index} className="glass-card border-white/10 bg-transparent reveal group hover:-translate-y-2 transition-transform duration-300">
+                <CardHeader className="text-center">
+                  <div className="mb-6 p-4 bg-white/5 w-fit mx-auto rounded-full group-hover:bg-primary/20 transition-colors duration-500">
+                    {service.icon}
+                  </div>
+                  <CardTitle className="font-display text-2xl text-white mb-2">{service.title}</CardTitle>
+                </CardHeader>
+                <CardContent className="text-center">
+                  <p className="text-muted-foreground leading-relaxed">{service.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mt-8">
+            {techServices.slice(3, 5).map((service, index) => (
+              <Card key={index + 3} className="glass-card border-white/10 bg-transparent reveal group hover:-translate-y-2 transition-transform duration-300">
                 <CardHeader className="text-center">
                   <div className="mb-6 p-4 bg-white/5 w-fit mx-auto rounded-full group-hover:bg-primary/20 transition-colors duration-500">
                     {service.icon}

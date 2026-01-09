@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Mail, MapPin, Send, Loader2 } from 'lucide-react';
+import { MapView } from '@/components/Map';
 
 import { toast } from 'sonner';
 
@@ -48,9 +49,9 @@ export default function Contact() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
             {/* Contact Info */}
-            <div className="glass-card p-8 md:p-10 rounded-2xl h-full animate-in fade-in slide-in-from-left-10 duration-700 delay-100">
+            <div className="glass-card p-8 md:p-10 rounded-2xl h-full animate-in fade-in slide-in-from-left-10 duration-700 delay-100 flex flex-col">
               <h3 className="font-display font-bold text-3xl mb-8">Contact Information</h3>
-              <div className="space-y-8">
+              <div className="space-y-8 flex-grow">
                 <div className="flex items-start gap-5 group">
                   <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
                     <Mail className="w-6 h-6 text-primary" />
@@ -68,12 +69,27 @@ export default function Contact() {
                   <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
                     <MapPin className="w-6 h-6 text-primary" />
                   </div>
-                  <div>
+                  <div className="w-full">
                     <p className="font-bold text-lg mb-1">Office: Dubai, UAE</p>
                     <div className="space-y-4 mt-2">
                       <div>
                         <p className="text-muted-foreground">Level 3, Innovation Hub, DIFC</p>
                       </div>
+                    </div>
+                    <div className="mt-6 w-full h-[300px] rounded-lg overflow-hidden border border-white/10">
+                      <MapView 
+                        className="w-full h-full"
+                        onMapReady={(map: google.maps.Map) => {
+                          const difcLocation = { lat: 25.2115, lng: 55.2838 };
+                          map.setCenter(difcLocation);
+                          map.setZoom(15);
+                          new google.maps.Marker({
+                            position: difcLocation,
+                            map: map,
+                            title: "Zer0Point Tech Ltd - DIFC Innovation Hub"
+                          });
+                        }}
+                      />
                     </div>
                   </div>
                 </div>

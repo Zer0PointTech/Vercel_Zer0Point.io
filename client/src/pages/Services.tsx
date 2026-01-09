@@ -133,7 +133,7 @@ export default function Services() {
                   <CardTitle className="font-display text-2xl text-white">{service.title}</CardTitle>
                 </CardHeader>
                 <CardContent className="flex-grow flex flex-col">
-                  <p className="text-muted-foreground mb-6">{service.description}</p>
+                  <p className="text-muted-foreground mb-6 min-h-[84px]">{service.description}</p>
                   <div className="mt-auto">
                     <ul className="space-y-3">
                       {service.features.map((feature, idx) => (
