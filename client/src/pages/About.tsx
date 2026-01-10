@@ -52,7 +52,7 @@ export default function About() {
               <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
               
               <div className="relative z-10">
-                <div className="w-40 h-40 mx-auto mb-6 rounded-full bg-white/10 border-2 border-primary/20 flex items-center justify-center overflow-hidden relative group-hover:border-primary/50 transition-colors duration-300">
+                <div className="w-40 h-40 mx-auto mb-6 rounded-full bg-white border-2 border-primary/20 flex items-center justify-center overflow-hidden relative group-hover:border-primary/50 transition-colors duration-300">
                   <img 
                     src={member.image} 
                     alt={member.name}
