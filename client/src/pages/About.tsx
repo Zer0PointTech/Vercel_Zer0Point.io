@@ -56,7 +56,7 @@ export default function About() {
                   <img 
                     src={member.image} 
                     alt={member.name}
-                    className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 ${member.name === "Daniel Khayat" ? "object-[center_15%]" : "object-center"}`}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 object-[center_15%]"
                   />
                 </div>
 
