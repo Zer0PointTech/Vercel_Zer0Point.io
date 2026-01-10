@@ -55,14 +55,7 @@ export default function Footer() {
                 </a>
               </li>
             </ul>
-            <div className="flex gap-4 mt-6">
-              <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-primary hover:text-background transition-all duration-300">
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-primary hover:text-background transition-all duration-300">
-                <Twitter className="w-5 h-5" />
-              </a>
-            </div>
+
           </div>
         </div>
 
