@@ -143,7 +143,7 @@ export function MapView({
       await loadMapScript();
       
       if (!mapContainer.current) {
-        console.error("Map container not found");
+        // Component might have unmounted
         return;
       }
       
