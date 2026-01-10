@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'wouter';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import logoTransparent from '@/assets/logo-white-slogan.png';
+import logoTransparent from '@/assets/logo-new-transparent.png';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
