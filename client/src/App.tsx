@@ -7,7 +7,9 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import Services from "./pages/Services";
 import Tech from "./pages/Tech";
-import Contact from "./pages/Contact";
+import Contact from '@/pages/Contact';
+import PrivacyPolicy from '@/pages/PrivacyPolicy';
+import TermsOfService from '@/pages/TermsOfService';
 import About from "./pages/About";
 import WorkExamples from "./pages/WorkExamples";
 import Navbar from "./components/Navbar";
@@ -21,7 +23,9 @@ function Router() {
       <Route path={"/services"} component={Services} />
       <Route path={"/tech"} component={Tech} />
       <Route path={"/tech/work-examples"} component={WorkExamples} />
-      <Route path={"/contact"} component={Contact} />
+      <Route path="/contact" component={Contact} />
+      <Route path="/privacy-policy" component={PrivacyPolicy} />
+      <Route path="/terms-of-service" component={TermsOfService} />
       <Route path={"/about"} component={About} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}

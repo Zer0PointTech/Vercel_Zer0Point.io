@@ -71,8 +71,8 @@ export default function Footer() {
             © {new Date().getFullYear()} Zer0Point Tech Ltd. All rights reserved.
           </p>
           <div className="flex gap-8">
-            <a href="#" className="text-sm text-muted-foreground hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="text-sm text-muted-foreground hover:text-white transition-colors">Terms of Service</a>
+            <Link href="/privacy-policy" className="text-sm text-muted-foreground hover:text-white transition-colors">Privacy Policy</Link>
+            <Link href="/terms-of-service" className="text-sm text-muted-foreground hover:text-white transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>
