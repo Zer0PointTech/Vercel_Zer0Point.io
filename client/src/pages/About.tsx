@@ -56,7 +56,7 @@ export default function About() {
                   <img 
                     src={member.image} 
                     alt={member.name}
-                    className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 ${member.name === "Daniel Khayat" ? "object-[center_15%]" : "object-[center_5%]"}`}
+                    className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 ${member.name === "Daniel Khayat" ? "object-[center_15%]" : "object-[center_5%]"}`} style={member.name === "Naji Masri" ? {paddingTop: '43px', paddingBottom: '2px', paddingLeft: '20px'} : undefined}
                   />
                 </div>
 
