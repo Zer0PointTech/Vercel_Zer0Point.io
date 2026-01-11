@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Linkedin, Mail } from 'lucide-react';
+import SEO from '@/components/SEO';
 
 export default function About() {
   const team = [
@@ -25,6 +26,11 @@ export default function About() {
 
   return (
     <div className="min-h-screen pt-40 pb-20">
+      <SEO 
+        title="About Us - Leadership & Vision" 
+        description="Meet the leadership team at Zer0Point Tech Ltd. Over 20 years of experience in driving growth, sustainability, and digital transformation."
+        keywords="Naji Masri, Business Leadership, Consulting Team, Zer0Point Founders, Executive Team"
+      />
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

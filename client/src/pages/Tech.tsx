@@ -3,6 +3,7 @@ import { useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Glasses, Smartphone, Globe, Gamepad2, Building, Sparkles, ArrowRight } from 'lucide-react';
+import SEO from '@/components/SEO';
 
 
 export default function Tech() {
@@ -64,6 +65,11 @@ export default function Tech() {
 
   return (
     <div className="min-h-screen text-foreground overflow-x-hidden selection:bg-primary selection:text-background">
+      <SEO 
+        title="Tech - AR/VR & Digital Twins" 
+        description="Cutting-edge AR/VR and Digital Twin solutions for enterprise training, marketing, and operational efficiency."
+        keywords="AR/VR Solutions, Digital Twins, Enterprise Metaverse, Virtual Reality Training, Augmented Reality Marketing"
+      />
       {/* Hero Section */}
       <section className="relative pt-40 pb-20 overflow-hidden">
         <div className="container relative z-10 text-center">

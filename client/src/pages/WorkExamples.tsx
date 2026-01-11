@@ -139,6 +139,7 @@ export default function WorkExamples() {
                 <img 
                   src="https://zer0point.io/MarketingPack/VR%20LIBRARY/VR%20Safety%20Library.png" 
                   alt="VR Safety Library"
+                  loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent" />
@@ -167,6 +168,7 @@ export default function WorkExamples() {
                 <img 
                   src="https://zer0point.io/MarketingPack/VR%20LIBRARY/VR%20Soft%20Skills%20Library.png" 
                   alt="VR Soft Skills Library"
+                  loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent" />
@@ -213,6 +215,7 @@ export default function WorkExamples() {
                 <img 
                   src={src} 
                   alt={`VR Experience ${idx + 1}`}
+                  loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">

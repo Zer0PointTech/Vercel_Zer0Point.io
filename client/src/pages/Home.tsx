@@ -3,6 +3,7 @@ import { useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ArrowRight, Globe, TrendingUp, Building2, CheckCircle, Target, Handshake, Briefcase, BarChart3 } from 'lucide-react';
+import SEO from '@/components/SEO';
 
 
 export default function Home() {
@@ -58,6 +59,11 @@ export default function Home() {
 
   return (
     <div className="min-h-screen text-foreground overflow-x-hidden selection:bg-primary selection:text-background">
+      <SEO 
+        title="GCC Market Entry & Strategic Consultancy" 
+        description="Zer0Point Tech Ltd enables rapid, scalable market access in the UAE and KSA through proven frameworks, deep regional expertise, and digital transformation strategies."
+        keywords="GCC Market Entry, Business Development, Strategic Consultancy, UAE Expansion, KSA Market Access"
+      />
       {/* Hero Section */}
       <section className="relative pt-40 pb-20 overflow-hidden">
         <div className="container relative z-10 text-center">

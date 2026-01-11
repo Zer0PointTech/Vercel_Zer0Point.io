@@ -11,7 +11,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="col-span-1 md:col-span-2">
             <Link href="/" className="flex items-center gap-2 mb-6" style={{marginBottom: '14px'}}>
-                <img src={logoTransparent} alt="Zer0Point Logo" className="h-48 w-auto" style={{marginTop: '-63px'}} />
+                <img src={logoTransparent} alt="Zer0Point Logo" loading="lazy" className="h-48 w-auto" style={{marginTop: '-63px'}} />
                 {/* Logo includes text now */}
             </Link>
             <p className="text-muted-foreground max-w-md text-lg leading-relaxed">

@@ -3,6 +3,7 @@ import { useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Building2, TrendingUp, Handshake, Languages, Target, Briefcase, CheckCircle, ArrowRight, Shield, Globe } from 'lucide-react';
+import SEO from '@/components/SEO';
 
 
 export default function Services() {
@@ -110,6 +111,11 @@ export default function Services() {
 
   return (
     <div className="min-h-screen text-foreground overflow-x-hidden selection:bg-primary selection:text-background">
+      <SEO 
+        title="Our Services - Business Development & Consultancy" 
+        description="Comprehensive services including Market Entry Strategy, Entity Setup, and Digital Transformation for businesses expanding into the GCC region."
+        keywords="Market Entry Strategy, Entity Setup UAE, Digital Transformation Services, Business Development GCC, Corporate Structuring"
+      />
       {/* Hero Section */}
       <section className="relative pt-40 pb-20 overflow-hidden">
         <div className="container relative z-10 text-center">
