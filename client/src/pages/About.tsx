@@ -87,7 +87,7 @@ export default function About() {
                   <h4 className="text-sm font-bold text-white uppercase tracking-wider text-center">Core Expertise</h4>
                   <div className="flex flex-wrap justify-center gap-2">
                     {member.expertise.map((skill) => (
-                      <span key={skill} className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-primary">
+                      <span key={skill} className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-primary" style={{paddingRight: '4px'}}>
                         {skill}
                       </span>
                     ))}

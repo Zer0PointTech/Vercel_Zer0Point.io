@@ -14,7 +14,7 @@ export default function Footer() {
                 <img src={logoTransparent} alt="Zer0Point Logo" loading="lazy" className="h-48 w-auto" style={{marginTop: '-63px'}} />
                 {/* Logo includes text now */}
             </Link>
-            <p className="text-muted-foreground max-w-md text-lg leading-relaxed">
+            <p className="text-muted-foreground max-w-md text-lg leading-relaxed" style={{marginTop: '-74px'}}>
               Zero limits. Infinite possibilities.
             </p>
           </div>
