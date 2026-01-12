@@ -11,6 +11,7 @@ export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     subject: '',
     message: ''
   });
@@ -42,7 +43,7 @@ export default function Contact() {
       description: "We'll get back to you as soon as possible."
     });
 
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
     setIsSubmitting(false);
   };
 
@@ -149,24 +150,39 @@ export default function Contact() {
                     />
                   </div>
                 </div>
-                
-                <div className="space-y-2">
-                  <label htmlFor="subject" className="text-sm font-medium text-gray-300">Subject</label>
-                  <select 
-                    id="subject"
-                    name="subject"
-                    required
-                    value={formData.subject}
-                    onChange={(e) => setFormData(prev => ({ ...prev, subject: e.target.value }))}
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all text-gray-300"
-                  >
-                    <option value="" disabled>Select a topic</option>
-                    <option value="Business Development">Business Development</option>
-                    <option value="Consultancy">Consultancy</option>
-                    <option value="Entity Setup">Entity Setup</option>
-                    <option value="Partnership">Partnership Opportunity</option>
-                    <option value="Other">Other Inquiry</option>
-                  </select>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label htmlFor="phone" className="text-sm font-medium text-gray-300">Mobile Number</label>
+                    <input 
+                      id="phone"
+                      name="phone"
+                      type="tel" 
+                      required
+                      value={formData.phone}
+                      onChange={handleChange}
+                      className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder:text-gray-600"
+                      placeholder="+971 50 123 4567"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label htmlFor="subject" className="text-sm font-medium text-gray-300">Subject</label>
+                    <select 
+                      id="subject"
+                      name="subject"
+                      required
+                      value={formData.subject}
+                      onChange={(e) => setFormData(prev => ({ ...prev, subject: e.target.value }))}
+                      className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all text-gray-300 [&>option]:bg-[#0f172a] [&>option]:text-gray-300"
+                    >
+                      <option value="" disabled>Select a topic</option>
+                      <option value="Business Development">Business Development</option>
+                      <option value="Consultancy">Consultancy</option>
+                      <option value="Tech">Tech</option>
+                      <option value="Entity Setup">Entity Setup</option>
+                      <option value="Partnership">Partnership Opportunity</option>
+                    </select>
+                  </div>
                 </div>
 
                 <div className="space-y-2">
