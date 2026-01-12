@@ -197,8 +197,8 @@ export default function Tech() {
             Let's discuss how our XR expertise can elevate your project.
           </p>
           
-          <Button size="lg" className="h-16 px-10 text-xl bg-white text-background hover:bg-gray-200 rounded-none border-0 shadow-xl transition-transform hover:-translate-y-1" onClick={() => window.location.href = 'mailto:info@zer0point.io'}>
-            Contact Us: info@zer0point.io
+          <Button size="lg" className="h-16 px-10 text-xl bg-white text-background hover:bg-gray-200 rounded-none border-0 shadow-xl transition-transform hover:-translate-y-1" onClick={() => setLocation('/contact')}>
+            Contact Us
           </Button>
         </div>
       </section>

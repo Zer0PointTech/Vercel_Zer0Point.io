@@ -17,15 +17,7 @@ export default function XRVR() {
             <p className="text-xl text-muted-foreground leading-relaxed mb-8">
               Experience the future of digital interaction with our cutting-edge Extended Reality and Virtual Reality solutions.
             </p>
-            <div className="flex justify-center gap-4">
-              <Button 
-                size="lg" 
-                className="bg-primary text-background hover:bg-primary/90 text-lg px-8 py-6 h-auto rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_30px_rgba(6,182,212,0.5)]"
-                onClick={() => window.open('https://www.zer0point.io', '_blank')}
-              >
-                Visit Legacy Site <ExternalLink className="ml-2 w-5 h-5" />
-              </Button>
-            </div>
+
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">

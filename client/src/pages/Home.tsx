@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowRight, Globe, TrendingUp, Building2, CheckCircle, Target, Handshake, Briefcase, BarChart3 } from 'lucide-react';
+import { ArrowRight, Globe, TrendingUp, Building2, CheckCircle, Target, Handshake, Briefcase, BarChart3, Cpu } from 'lucide-react';
 import SEO from '@/components/SEO';
 
 
@@ -30,22 +30,10 @@ export default function Home() {
 
   const pillars = [
     {
-      icon: <Handshake className="w-12 h-12 text-primary" />,
-      title: "Business Development",
-      description: "Driving growth through strategic partnerships, market penetration, and ecosystem building across the MEA region.",
-      examples: [
-        "Unlocked $300M+ growth potential through strategic partnerships with top regional key accounts.",
-        "Led end-to-end enterprise sales cycles for multimillion-dollar program wins (Aramco, NEOM, STC).",
-        "Built and scaled channel ecosystems (SIs/ISVs/Distributors) to accelerate solution adoption.",
-        "Orchestrated cross-functional teams to shorten deal cycles and improve win rates.",
-        "Accelerated Market Entry: Rapidly establish local presence and regulatory compliance to shorten time-to-revenue in Saudi Arabia and UAE.",
-        "High-Value Deal Structuring: Architect complex, multi-stakeholder commercial agreements that secure long-term recurring revenue streams."
-      ]
-    },
-    {
       icon: <Briefcase className="w-12 h-12 text-primary" />,
       title: "Consultancy",
       description: "Expert guidance on digital transformation, sustainability, and market entry strategies for complex global markets.",
+      link: "/services",
       examples: [
         "Advised on specialty chemical entry strategies and conducted competitor diversification studies.",
         "Developed industry-focused restructuring approaches to improve customer focus and operational resilience.",
@@ -53,6 +41,34 @@ export default function Home() {
         "Designed partner development programs for global tech giants (Microsoft, HP, Dell) across the region.",
         "AI & Digital Twin Strategy: Define actionable roadmaps for adopting Industrial AI and Digital Twins to optimize asset performance and reduce costs.",
         "Cross-Border Expansion Strategy: Data-driven market analysis to identify and capture high-yield opportunities in emerging and established global markets."
+      ]
+    },
+    {
+      icon: <Cpu className="w-12 h-12 text-primary" />,
+      title: "Tech",
+      description: "Cutting-edge immersive technology solutions and digital transformation services.",
+      link: "/tech",
+      examples: [
+        "Strategic Technology Partnerships",
+        "Immersive Technology Consulting",
+        "Enterprise XR & Digital Solutions",
+        "Interactive Experience Design",
+        "VR/AR Training & Simulation Solutions",
+        "Software & Platform Representation"
+      ]
+    },
+    {
+      icon: <Handshake className="w-12 h-12 text-primary" />,
+      title: "Business Development",
+      description: "Driving growth through strategic partnerships, market penetration, and ecosystem building across the MEA region.",
+      link: "/services",
+      examples: [
+        "Unlocked $300M+ growth potential through strategic partnerships with top regional key accounts.",
+        "Led end-to-end enterprise sales cycles for multimillion-dollar program wins (Aramco, NEOM, STC).",
+        "Built and scaled channel ecosystems (SIs/ISVs/Distributors) to accelerate solution adoption.",
+        "Orchestrated cross-functional teams to shorten deal cycles and improve win rates.",
+        "Accelerated Market Entry: Rapidly establish local presence and regulatory compliance to shorten time-to-revenue in Saudi Arabia and UAE.",
+        "High-Value Deal Structuring: Architect complex, multi-stakeholder commercial agreements that secure long-term recurring revenue streams."
       ]
     }
   ];
@@ -107,18 +123,25 @@ export default function Home() {
           <div className="text-center max-w-3xl mx-auto mb-20 reveal">
             <h2 className="font-display font-bold text-4xl md:text-5xl mb-6">Our Core Expertise</h2>
             <p className="text-xl text-muted-foreground">
-              Focused on two key pillars to drive your business forward in the Middle East & Africa.
+              Focused on three key pillars to drive your business forward in the Middle East & Africa.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {pillars.map((pillar, index) => (
-              <Card key={index} className="glass-card border-white/10 bg-transparent reveal group h-full flex flex-col">
+              <Card 
+                key={index} 
+                className="glass-card border-white/10 bg-transparent reveal group h-full flex flex-col cursor-pointer hover:border-primary/30 transition-all duration-300"
+                onClick={() => setLocation(pillar.link)}
+              >
                 <CardHeader className="pb-2 flex-none">
                   <div className="mb-6 p-4 bg-white/5 w-fit rounded-xl group-hover:bg-primary/20 transition-colors duration-500">
                     {pillar.icon}
                   </div>
-                  <CardTitle className="font-display text-3xl text-white mb-4">{pillar.title}</CardTitle>
+                  <CardTitle className="font-display text-3xl text-white mb-4 flex items-center gap-2">
+                    {pillar.title}
+                    <ArrowRight className="w-5 h-5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-primary" />
+                  </CardTitle>
                   <p className="text-lg text-muted-foreground leading-relaxed min-h-[84px]">{pillar.description}</p>
                 </CardHeader>
                 <CardContent className="pt-6 flex-grow">
