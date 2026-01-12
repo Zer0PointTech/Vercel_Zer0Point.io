@@ -101,14 +101,6 @@ export default function Home() {
             >
               Schedule a call <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
-            <Button 
-              variant="outline" 
-              size="lg" 
-              className="h-14 px-8 text-lg border-white/20 hover:bg-white/5 hover:text-white rounded-none backdrop-blur-sm"
-              onClick={() => setLocation('/services')}
-            >
-              View All Services
-            </Button>
           </div>
         </div>
       </section>
