@@ -134,7 +134,7 @@ export default function Home() {
                   <div className="mb-6 p-4 bg-white/5 w-fit rounded-xl group-hover:bg-primary/20 transition-colors duration-500">
                     {pillar.icon}
                   </div>
-                  <CardTitle className="font-display text-3xl text-white mb-4 flex items-center gap-2">
+                  <CardTitle className="font-display text-3xl text-white mb-4 flex items-center gap-2 min-h-[72px]">
                     {pillar.title}
                     <ArrowRight className="w-5 h-5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-primary" />
                   </CardTitle>
