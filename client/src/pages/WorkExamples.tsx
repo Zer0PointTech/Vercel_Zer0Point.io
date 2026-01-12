@@ -84,7 +84,7 @@ export default function WorkExamples() {
     {
       title: "Next World VR Product Reel",
       description: "35-second showcase of our Next World VR platform capabilities",
-      youtubeId: "tB42umIv54w" // Using "Next World: New In-VR Tutorial" as a close match for product reel/intro
+      youtubeId: "tB42umIv54w"
     },
     {
       title: "VR Trainer Onboarding",
