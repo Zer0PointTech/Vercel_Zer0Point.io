@@ -1,14 +1,25 @@
 import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
-import { Mail, MapPin, Send, Loader2 } from 'lucide-react';
+import { Checkbox } from '@/components/ui/checkbox';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Mail, MapPin, Send, Loader2, CheckCircle2 } from 'lucide-react';
 import { MapView } from '@/components/Map';
 import SEO from '@/components/SEO';
 import ReCAPTCHA from "react-google-recaptcha";
+import { Link } from 'wouter';
 
 import { toast } from 'sonner';
 
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [privacyAccepted, setPrivacyAccepted] = useState(false);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [formData, setFormData] = useState({
     name: '',
@@ -37,6 +48,11 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    if (!privacyAccepted) {
+      toast.error("Please accept the Privacy Policy to continue.");
+      return;
+    }
+
     const token = recaptchaRef.current?.getValue();
     if (!token) {
       toast.error("Please complete the reCAPTCHA verification.");
@@ -48,11 +64,9 @@ export default function Contact() {
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1500));
 
-    toast.success("Message sent successfully!", {
-      description: "We'll get back to you as soon as possible."
-    });
-
+    setIsSuccess(true);
     setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+    setPrivacyAccepted(false);
     recaptchaRef.current?.reset();
     setIsSubmitting(false);
   };
@@ -127,7 +141,26 @@ export default function Contact() {
             </div>
 
             {/* Contact Form */}
-            <div className="glass-card p-8 md:p-10 rounded-2xl h-full animate-in fade-in slide-in-from-right-10 duration-700 delay-200">
+            <div className="glass-card p-8 md:p-10 rounded-2xl h-full animate-in fade-in slide-in-from-right-10 duration-700 delay-200 relative overflow-hidden">
+              {isSuccess ? (
+                <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center bg-[#0f172a]/95 backdrop-blur-sm z-20 animate-in fade-in duration-500">
+                  <div className="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mb-6">
+                    <CheckCircle2 className="w-10 h-10 text-primary" />
+                  </div>
+                  <h3 className="font-display font-bold text-3xl mb-4">Thank You!</h3>
+                  <p className="text-xl text-muted-foreground mb-8 max-w-md">
+                    Your message has been sent successfully. Our team will review your inquiry and get back to you shortly.
+                  </p>
+                  <Button 
+                    onClick={() => setIsSuccess(false)}
+                    variant="outline"
+                    className="border-primary/50 text-primary hover:bg-primary/10"
+                  >
+                    Send Another Message
+                  </Button>
+                </div>
+              ) : null}
+
               <h3 className="font-display font-bold text-3xl mb-2">Send us a Message</h3>
               <p className="text-muted-foreground mb-8">Fill out the form below and we'll respond within 24 hours.</p>
               
@@ -177,21 +210,22 @@ export default function Contact() {
                   </div>
                   <div className="space-y-2">
                     <label htmlFor="subject" className="text-sm font-medium text-gray-300">Subject</label>
-                    <select 
-                      id="subject"
-                      name="subject"
+                    <Select 
+                      value={formData.subject} 
+                      onValueChange={(value) => setFormData(prev => ({ ...prev, subject: value }))}
                       required
-                      value={formData.subject}
-                      onChange={(e) => setFormData(prev => ({ ...prev, subject: e.target.value }))}
-                      className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all text-gray-300 [&>option]:bg-[#0f172a] [&>option]:text-gray-300"
                     >
-                      <option value="" disabled>Select a topic</option>
-                      <option value="Business Development">Business Development</option>
-                      <option value="Consultancy">Consultancy</option>
-                      <option value="Tech">Tech</option>
-                      <option value="Entity Setup">Entity Setup</option>
-                      <option value="Partnership">Partnership Opportunity</option>
-                    </select>
+                      <SelectTrigger className="w-full h-[50px] bg-white/5 border-white/10 text-gray-300 focus:ring-primary">
+                        <SelectValue placeholder="Select a topic" />
+                      </SelectTrigger>
+                      <SelectContent className="bg-[#0f172a] border-white/10 text-gray-300">
+                        <SelectItem value="Business Development" className="focus:bg-primary/20 focus:text-primary cursor-pointer">Business Development</SelectItem>
+                        <SelectItem value="Consultancy" className="focus:bg-primary/20 focus:text-primary cursor-pointer">Consultancy</SelectItem>
+                        <SelectItem value="Tech" className="focus:bg-primary/20 focus:text-primary cursor-pointer">Tech</SelectItem>
+                        <SelectItem value="Entity Setup" className="focus:bg-primary/20 focus:text-primary cursor-pointer">Entity Setup</SelectItem>
+                        <SelectItem value="Partnership" className="focus:bg-primary/20 focus:text-primary cursor-pointer">Partnership Opportunity</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </div>
                 </div>
 
@@ -208,7 +242,24 @@ export default function Contact() {
                   ></textarea>
                 </div>
 
-                <div className="flex justify-center">
+                <div className="flex items-start space-x-3 pt-2">
+                  <Checkbox 
+                    id="privacy" 
+                    checked={privacyAccepted}
+                    onCheckedChange={(checked) => setPrivacyAccepted(checked as boolean)}
+                    className="mt-1 border-white/30 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
+                  />
+                  <div className="grid gap-1.5 leading-none">
+                    <label
+                      htmlFor="privacy"
+                      className="text-sm font-medium leading-relaxed text-muted-foreground peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    >
+                      I agree to the <Link href="/privacy-policy" className="text-primary hover:underline">Privacy Policy</Link> and consent to the processing of my personal data in accordance with UAE laws and GDPR regulations.
+                    </label>
+                  </div>
+                </div>
+
+                <div className="flex justify-center pt-4">
                   <ReCAPTCHA
                     ref={recaptchaRef}
                     sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI" // Test key - replace with your own
