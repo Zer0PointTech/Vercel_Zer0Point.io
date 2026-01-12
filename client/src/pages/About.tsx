@@ -7,8 +7,14 @@ export default function About() {
     {
       name: "Naji Masri",
       role: "Managing Partner",
-      bio: "An experienced business leader with over 20 years of success in driving growth, sustainability, and digital transformation across the chemical and industrial sectors. Naji has a proven track record of unlocking $300M in growth potential through strategic partnerships and leading executive-level commercial operations. His expertise spans business development, ESG-driven initiatives, and supply chain optimization using AI and digital twins. He is committed to innovation and delivering long-term value in complex global markets.",
-      expertise: ["Business Development", "Sustainability & ESG", "Digital Transformation", "Strategic Planning"],
+      bio: "Naji Masri is a senior chemicals and industrials executive with deep expertise in business development, sustainability, and digital transformation across the Middle East and EMEA. Since starting his career in September 2005, he has led high-impact commercial and transformation initiatives, built strategic partnerships, and driven market expansion programs—unlocking approximately €300 million in identified growth potential through partnership-led growth across petrochemical and consumer-oriented value chains. Previously, Naji held multiple leadership roles at BASF in the Middle East and Egypt, including Director of Business Development, Sustainability & Digitalization (through Dec 2025), Head of Strategy & Controlling, and Regional Digitalization Manager. Across these roles, he advised executive leadership on portfolio and market prioritization, performance management, and scalable digitalization—spanning AI-enabled decision support, supply chain optimization, and customer engagement transformation. Naji specializes in linking sustainability and digitalization to measurable commercial outcomes, including circular economy and chemical recycling business models, low-carbon and low-VOC strategies, and AI-driven supply chain and procurement improvement. As Managing Partner at Zer0point Tech Ltd (Dubai), he supports corporates, consulting firms, and investors through executive advisory and project-based engagements focused on strategy, partnering, and value creation across MENA/EMEA.",
+      expertise: [
+        "C-Suite Advisory & Stakeholder Management",
+        "Commercial Strategy & Partnership-Led Growth",
+        "AI/Digital Transformation",
+        "Supply Chain & Procurement Transformation",
+        "Sustainability-to-Growth Strategy"
+      ],
       linkedin: "https://linkedin.com/in/najimasri/",
       email: "najimasri@zer0point.io",
       image: "/images/naji-masri.png"
@@ -16,8 +22,13 @@ export default function About() {
     {
       name: "Daniel Khayat",
       role: "Managing Partner",
-      bio: "A senior leader with 15+ years of experience driving enterprise technology adoption across the MEA region. Daniel specializes in AI, XR, and IoT solutions, having delivered multimillion-dollar wins for major entities like Aramco, NEOM, and STC. Recognized as a Global Sales MVP, he excels in structuring complex deals, building partner ecosystems, and guiding C-suite stakeholders through digital transformation. His deep regional expertise and trilingual capabilities (Arabic, English, French) make him a trusted advisor for government and enterprise clients.",
-      expertise: ["AI & XR Sales Strategy", "Enterprise Account Management", "GTM Execution", "Public Sector Engagement"],
+      bio: "Daniel Khayat is a senior executive with deep expertise in enterprise sales, business development, and regional growth strategy across the Middle East and Africa. He has led high‑impact commercial initiatives, expanded channel ecosystems, and delivered consistent revenue acceleration, earning recognition such as the 2023 Global Sales MVP Award. Previously serving as Head of Product at HTC MEA, Daniel drove a 25% increase in Telco and enterprise sales while shaping go‑to‑market strategies for advanced technology solutions. His career includes collaborations with leading global innovators including HTC, Magic Leap, Meta, Microsoft, Google, Qualcomm, HP, Dell, Nokia, and Sony, as well as major telecom operators across the Gulf and Africa. Daniel specializes in immersive B2B technology and XR enterprise deployments, leveraging AI‑powered post‑production platforms and integrated AI solutions for remote assistance, virtual collaboration, and VR‑based HSE and soft‑skills training. As a trusted advisor to C‑level leaders, he focuses on driving market penetration, unlocking scalable growth opportunities, and delivering transformative digital solutions that accelerate innovation for enterprise and government clients.",
+      expertise: [
+        "C‑Suite Engagement & Enterprise Relationship Building",
+        "Partner & Ecosystem Collaboration",
+        "Enterprise Sales Leadership & Deal Acceleration",
+        "Complex Portfolio & Product Strategy Management"
+      ],
       linkedin: "https://linkedin.com/in/danielkhayat",
       email: "danielkhayat@zer0point.io",
       image: "/images/daniel-khayat.jpg"

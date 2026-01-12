@@ -33,7 +33,7 @@ export default function Home() {
       icon: <Briefcase className="w-12 h-12 text-primary" />,
       title: "Consultancy",
       description: "Expert guidance on digital transformation, sustainability, and market entry strategies for complex global markets.",
-      link: "/services",
+      link: "/services#consultancy",
       examples: [
         "Advised on specialty chemical entry strategies and conducted competitor diversification studies.",
         "Developed industry-focused restructuring approaches to improve customer focus and operational resilience.",
@@ -61,7 +61,7 @@ export default function Home() {
       icon: <Handshake className="w-12 h-12 text-primary" />,
       title: "Business Development",
       description: "Driving growth through strategic partnerships, market penetration, and ecosystem building across the MEA region.",
-      link: "/services",
+      link: "/services#business-development",
       examples: [
         "Unlocked $300M+ growth potential through strategic partnerships with top regional key accounts.",
         "Led end-to-end enterprise sales cycles for multimillion-dollar program wins (Aramco, NEOM, STC).",

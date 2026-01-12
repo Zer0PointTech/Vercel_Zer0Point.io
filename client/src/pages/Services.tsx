@@ -30,20 +30,7 @@ export default function Services() {
 
   const allServices = [
     {
-      icon: <Handshake className="w-10 h-10 text-primary" />,
-      title: "Business Development",
-      description: "Accelerate your market penetration with our embedded regional presence and strategic partnership networks.",
-      features: [
-        "Strategic Partnership Development",
-        "Key Account Management",
-        "Lead Generation & Qualification",
-        "Reseller & JV Vetting",
-        "Sales Cycle Orchestration",
-        "Accelerated Market Entry",
-        "High-Value Deal Structuring"
-      ]
-    },
-    {
+      id: "consultancy",
       icon: <Briefcase className="w-10 h-10 text-primary" />,
       title: "Consultancy",
       description: "Expert guidance on navigating complex markets, digital transformation, and sustainability initiatives.",
@@ -55,6 +42,21 @@ export default function Services() {
         "Supply Chain Optimization",
         "AI & Digital Twin Strategy",
         "Cross-Border Expansion Strategy"
+      ]
+    },
+    {
+      id: "business-development",
+      icon: <Handshake className="w-10 h-10 text-primary" />,
+      title: "Business Development",
+      description: "Accelerate your market penetration with our embedded regional presence and strategic partnership networks.",
+      features: [
+        "Strategic Partnership Development",
+        "Key Account Management",
+        "Lead Generation & Qualification",
+        "Reseller & JV Vetting",
+        "Sales Cycle Orchestration",
+        "Accelerated Market Entry",
+        "High-Value Deal Structuring"
       ]
     },
     {
@@ -133,7 +135,7 @@ export default function Services() {
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {allServices.map((service, index) => (
-              <Card key={index} className="glass-card border-white/10 bg-transparent reveal group h-full flex flex-col">
+              <Card key={index} id={service.id} className="glass-card border-white/10 bg-transparent reveal group h-full flex flex-col scroll-mt-32">
                 <CardHeader>
                   <div className="mb-4 p-3 bg-white/5 w-fit rounded-lg group-hover:bg-primary/20 transition-colors duration-300">
                     {service.icon}
