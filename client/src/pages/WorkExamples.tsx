@@ -79,6 +79,39 @@ export default function WorkExamples() {
     "Active Listening", "Interview Auditor", "Remote Inclusion", "Career Communication", "Reporting Racism"
   ];
 
+  const demoVideos = [
+    {
+      title: "Next World VR Product Reel",
+      description: "35-second showcase of our Next World VR platform capabilities",
+      src: "https://zer0point.io/MarketingPack/VIDEOS/Promo%20Reels/35%20sec%20Next%20World%20-%20Product%20Reel%20(with%20BGM).mp4"
+    },
+    {
+      title: "VR Trainer Onboarding",
+      description: "Complete onboarding experience for VR training instructors",
+      src: "https://zer0point.io/MarketingPack/VIDEOS/compressed/Next%20World%20-%20VR%20Trainer%20Onboarding%20Day_compressed.mp4"
+    },
+    {
+      title: "Fire Extinguisher Skills Demo",
+      description: "Interactive fire safety training demonstration",
+      src: "https://zer0point.io/MarketingPack/VIDEOS/compressed/Fire%20Extinguisher%20Skills_compressed.mp4"
+    },
+    {
+      title: "Hand Safety Training",
+      description: "Comprehensive hand safety protocols in VR",
+      src: "https://zer0point.io/MarketingPack/VIDEOS/compressed/Hand%20Safety_compressed.mp4"
+    },
+    {
+      title: "Electric Vehicle Safety Demo",
+      description: "EV depower and initialization training module",
+      src: "https://zer0point.io/MarketingPack/VIDEOS/Safety%20Training/NW%20Depower%20and%20Initialise%20Electric%20Vehicle%20Demo%20Video%20(muted).mp4"
+    },
+    {
+      title: "Bodyswaps Platform Trailer",
+      description: "Soft skills training platform demonstration",
+      src: "https://zer0point.io/MarketingPack/VIDEOS/compressed/Bodyswaps%20Platform%20Trailer%20-%20social%20edit_compressed.mp4"
+    }
+  ];
+
   const categories = [
     {
       icon: <HardHat className="w-8 h-8 text-primary" />,
@@ -135,28 +168,26 @@ export default function WorkExamples() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Safety Library */}
             <Card className="glass-card border-white/10 bg-transparent reveal group h-full flex flex-col">
-              <div className="relative h-64 w-full overflow-hidden rounded-t-xl border-b border-white/10">
-                <img 
-                  src="https://zer0point.io/MarketingPack/VR%20LIBRARY/VR%20Safety%20Library.png" 
-                  alt="VR Safety Library"
-                  loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent" />
+              <div className="p-6 pb-0">
+                <div className="relative w-full overflow-hidden rounded-xl border border-white/10">
+                  <img 
+                    src="https://zer0point.io/MarketingPack/VR%20LIBRARY/VR%20Safety%20Library.png" 
+                    alt="VR Safety Library"
+                    loading="lazy"
+                    className="w-full h-auto object-contain"
+                  />
+                </div>
               </div>
               <CardHeader>
-                <div className="mb-4 p-3 bg-white/5 w-fit rounded-lg group-hover:bg-primary/20 transition-colors duration-300">
-                  <ShieldCheck className="w-10 h-10 text-primary" />
-                </div>
                 <CardTitle className="font-display text-3xl text-white">VR Safety Library</CardTitle>
                 <p className="text-muted-foreground mt-2">Comprehensive safety training modules designed for immersive learning experiences.</p>
               </CardHeader>
               <CardContent className="flex-grow">
-                <div className="flex flex-wrap gap-2 mt-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
                   {safetyModules.map((module, idx) => (
-                    <Badge key={idx} variant="outline" className="bg-white/5 hover:bg-primary/20 border-white/10 text-gray-300 py-1.5 px-3 transition-colors">
+                    <div key={idx} className="bg-white/5 hover:bg-primary/20 border border-white/10 rounded-lg p-3 text-sm text-gray-300 transition-colors text-center">
                       {module}
-                    </Badge>
+                    </div>
                   ))}
                 </div>
               </CardContent>
@@ -164,28 +195,26 @@ export default function WorkExamples() {
 
             {/* Soft Skills Library */}
             <Card className="glass-card border-white/10 bg-transparent reveal group h-full flex flex-col">
-              <div className="relative h-64 w-full overflow-hidden rounded-t-xl border-b border-white/10">
-                <img 
-                  src="https://zer0point.io/MarketingPack/VR%20LIBRARY/VR%20Soft%20Skills%20Library.png" 
-                  alt="VR Soft Skills Library"
-                  loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent" />
+              <div className="p-6 pb-0">
+                <div className="relative w-full overflow-hidden rounded-xl border border-white/10">
+                  <img 
+                    src="https://zer0point.io/MarketingPack/VR%20LIBRARY/VR%20Soft%20Skills%20Library.png" 
+                    alt="VR Soft Skills Library"
+                    loading="lazy"
+                    className="w-full h-auto object-contain"
+                  />
+                </div>
               </div>
               <CardHeader>
-                <div className="mb-4 p-3 bg-white/5 w-fit rounded-lg group-hover:bg-primary/20 transition-colors duration-300">
-                  <BrainCircuit className="w-10 h-10 text-primary" />
-                </div>
                 <CardTitle className="font-display text-3xl text-white">VR Soft Skills Library</CardTitle>
                 <p className="text-muted-foreground mt-2">Professional development and interpersonal skills training in virtual environments.</p>
               </CardHeader>
               <CardContent className="flex-grow">
-                <div className="flex flex-wrap gap-2 mt-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4">
                   {softSkillsModules.map((module, idx) => (
-                    <Badge key={idx} variant="outline" className="bg-white/5 hover:bg-primary/20 border-white/10 text-gray-300 py-1.5 px-3 transition-colors">
+                    <div key={idx} className="bg-white/5 hover:bg-primary/20 border border-white/10 rounded-lg p-3 text-sm text-gray-300 transition-colors text-center">
                       {module}
-                    </Badge>
+                    </div>
                   ))}
                 </div>
               </CardContent>
@@ -205,6 +234,26 @@ export default function WorkExamples() {
             From confined space training to complex industrial simulations, our gallery showcases the depth and breadth of our immersive learning solutions.
           </p>
           
+          {/* Demo Videos Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto mb-20">
+            {demoVideos.map((video, idx) => (
+              <Card key={idx} className="glass-card border-white/10 bg-transparent overflow-hidden group hover:border-primary/50 transition-all duration-300">
+                <div className="relative aspect-video bg-black">
+                  <video 
+                    src={video.src}
+                    controls
+                    className="w-full h-full object-cover"
+                    poster={galleryImages[idx] || undefined} // Fallback poster if available
+                  />
+                </div>
+                <CardHeader className="p-6">
+                  <CardTitle className="font-display text-lg text-white mb-2">{video.title}</CardTitle>
+                  <p className="text-sm text-muted-foreground">{video.description}</p>
+                </CardHeader>
+              </Card>
+            ))}
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {galleryImages.map((src, idx) => (
               <div 

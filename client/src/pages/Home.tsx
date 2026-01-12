@@ -69,25 +69,25 @@ export default function Home() {
         <div className="container relative z-10 text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-8 reveal">
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-            <span className="text-sm font-medium tracking-wide text-primary uppercase">Zero Limits. Infinite Possibilities.</span>
+            <span className="text-sm font-medium tracking-wide text-primary uppercase">Business Development & Consultancy</span>
           </div>
           
           <h1 className="font-display font-bold text-5xl md:text-7xl lg:text-8xl tracking-tight mb-8 leading-[1.1] reveal">
-            Business Development <br />
-            <span className="text-gradient">& Consultancy</span>
+            Zero Limits. <br />
+            <span className="text-gradient">Infinite Possibilities.</span>
           </h1>
           
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed reveal">
-            Your trusted bridge to success in the UAE and KSA. We enable rapid, scalable market access through proven frameworks and deep regional expertise.
+            We enable rapid, scalable market access through proven frameworks and deep regional expertise.
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 reveal">
             <Button 
               size="lg" 
               className="h-14 px-8 text-lg bg-primary text-background hover:bg-primary/90 rounded-none border border-primary/50 shadow-[0_0_20px_rgba(var(--primary),0.3)] transition-all hover:shadow-[0_0_40px_rgba(var(--primary),0.5)]"
-              onClick={() => setLocation('/contact')}
+              onClick={() => window.open('https://calendly.com/zer0point', '_blank')}
             >
-              Start Your Journey <ArrowRight className="ml-2 w-5 h-5" />
+              Schedule a call <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
             <Button 
               variant="outline" 
