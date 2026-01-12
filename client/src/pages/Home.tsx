@@ -138,7 +138,7 @@ export default function Home() {
                     {pillar.title}
                     <ArrowRight className="w-5 h-5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-primary" />
                   </CardTitle>
-                  <p className="text-lg text-muted-foreground leading-relaxed min-h-[112px]">{pillar.description}</p>
+                  <p className="text-lg text-muted-foreground leading-relaxed min-h-[140px]">{pillar.description}</p>
                 </CardHeader>
                 <CardContent className="pt-6 flex-grow">
                   <div className="space-y-4 h-full flex flex-col">
