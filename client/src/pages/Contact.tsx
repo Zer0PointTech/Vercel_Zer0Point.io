@@ -8,25 +8,44 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Mail, MapPin, Send, Loader2, CheckCircle2 } from 'lucide-react';
+import { Mail, MapPin, Send, Loader2, CheckCircle2, Home } from 'lucide-react';
 import { MapView } from '@/components/Map';
 import SEO from '@/components/SEO';
 import ReCAPTCHA from "react-google-recaptcha";
-import { Link } from 'wouter';
+import { Link, useLocation } from 'wouter';
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
+import { trpc } from '@/lib/trpc';
 
 import { toast } from 'sonner';
 
 export default function Contact() {
+  const [, setLocation] = useLocation();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
+  const [phone, setPhone] = useState<string | undefined>('');
   const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    phone: '',
     subject: '',
     message: ''
+  });
+
+  const contactMutation = trpc.contact.submit.useMutation({
+    onSuccess: () => {
+      setIsSuccess(true);
+      setFormData({ name: '', email: '', subject: '', message: '' });
+      setPhone('');
+      setPrivacyAccepted(false);
+      recaptchaRef.current?.reset();
+      setIsSubmitting(false);
+    },
+    onError: (error) => {
+      toast.error(error.message || "Failed to send message. Please try again.");
+      setIsSubmitting(false);
+    }
   });
 
   useEffect(() => {
@@ -53,6 +72,11 @@ export default function Contact() {
       return;
     }
 
+    if (!phone) {
+      toast.error("Please enter your mobile number.");
+      return;
+    }
+
     const token = recaptchaRef.current?.getValue();
     if (!token) {
       toast.error("Please complete the reCAPTCHA verification.");
@@ -61,14 +85,14 @@ export default function Contact() {
 
     setIsSubmitting(true);
 
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-
-    setIsSuccess(true);
-    setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
-    setPrivacyAccepted(false);
-    recaptchaRef.current?.reset();
-    setIsSubmitting(false);
+    contactMutation.mutate({
+      name: formData.name,
+      email: formData.email,
+      phone: phone,
+      subject: formData.subject,
+      message: formData.message,
+      recaptchaToken: token,
+    });
   };
 
   return (
@@ -152,11 +176,11 @@ export default function Contact() {
                     Your message has been sent successfully. Our team will review your inquiry and get back to you shortly.
                   </p>
                   <Button 
-                    onClick={() => setIsSuccess(false)}
-                    variant="outline"
-                    className="border-primary/50 text-primary hover:bg-primary/10"
+                    onClick={() => setLocation('/')}
+                    className="bg-primary text-background hover:bg-primary/90"
                   >
-                    Send Another Message
+                    <Home className="mr-2 h-5 w-5" />
+                    Back to Home
                   </Button>
                 </div>
               ) : null}
@@ -197,15 +221,13 @@ export default function Contact() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label htmlFor="phone" className="text-sm font-medium text-gray-300">Mobile Number</label>
-                    <input 
-                      id="phone"
-                      name="phone"
-                      type="tel" 
-                      required
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder:text-gray-600"
-                      placeholder="+971 50 123 4567"
+                    <PhoneInput
+                      international
+                      defaultCountry="AE"
+                      value={phone}
+                      onChange={setPhone}
+                      className="phone-input-dark w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all"
+                      placeholder="Enter phone number"
                     />
                   </div>
                   <div className="space-y-2">
@@ -262,7 +284,7 @@ export default function Contact() {
                 <div className="flex justify-center pt-4">
                   <ReCAPTCHA
                     ref={recaptchaRef}
-                    sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI" // Test key - replace with your own
+                    sitekey="6LeENEgsAAAAAFsmOMGm17fCtmjgWICwr5YqA4UG"
                     theme="dark"
                   />
                 </div>
@@ -302,6 +324,34 @@ export default function Contact() {
         </div>
       </main>
 
+      <style>{`
+        .phone-input-dark input {
+          background: transparent !important;
+          border: none !important;
+          color: #e5e7eb !important;
+          outline: none !important;
+          width: 100%;
+        }
+        .phone-input-dark input::placeholder {
+          color: #4b5563 !important;
+        }
+        .phone-input-dark .PhoneInputCountry {
+          margin-right: 0.75rem;
+        }
+        .phone-input-dark .PhoneInputCountrySelect {
+          background: transparent !important;
+          color: #e5e7eb !important;
+          border: none !important;
+        }
+        .phone-input-dark .PhoneInputCountrySelectArrow {
+          color: #9ca3af !important;
+          border-color: #9ca3af !important;
+        }
+        .phone-input-dark .PhoneInputCountryIcon {
+          border-radius: 4px;
+          overflow: hidden;
+        }
+      `}</style>
     </div>
   );
 }
