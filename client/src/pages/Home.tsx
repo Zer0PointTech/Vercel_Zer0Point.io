@@ -53,8 +53,7 @@ export default function Home() {
         "Immersive Technology Consulting: Advised enterprises on XR use cases, ROI, and deployment models, translating business needs into executable programs.",
         "Enterprise XR & Digital Solutions: Delivered end-to-end XR solutions (hardware, software, integration) for remote assistance, collaboration, and field operations.",
         "Interactive Experience Design: Designed user-centric, interactive XR experiences aligned to learning outcomes, adoption, and measurable engagement.",
-        "VR/AR Training & Simulation Solutions: Developed VR/AR training and simulation programs for HSE, soft-skills, and technical readiness with performance analytics.",
-        "Software & Platform Representation: Represented and commercialized software/platform portfolios, managing GTM, partner enablement, and enterprise pipeline development."
+        "VR/AR Training & Simulation Solutions: Developed VR/AR training and simulation programs for HSE, soft-skills, and technical readiness with performance analytics."
       ]
     },
     {
@@ -139,7 +138,7 @@ export default function Home() {
                     {pillar.title}
                     <ArrowRight className="w-5 h-5 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-primary" />
                   </CardTitle>
-                  <p className="text-lg text-muted-foreground leading-relaxed min-h-[84px]">{pillar.description}</p>
+                  <p className="text-lg text-muted-foreground leading-relaxed min-h-[112px]">{pillar.description}</p>
                 </CardHeader>
                 <CardContent className="pt-6 flex-grow">
                   <div className="space-y-4 h-full flex flex-col">
