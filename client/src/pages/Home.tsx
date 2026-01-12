@@ -49,12 +49,12 @@ export default function Home() {
       description: "Cutting-edge immersive technology solutions and digital transformation services.",
       link: "/tech",
       examples: [
-        "Strategic Technology Partnerships",
-        "Immersive Technology Consulting",
-        "Enterprise XR & Digital Solutions",
-        "Interactive Experience Design",
-        "VR/AR Training & Simulation Solutions",
-        "Software & Platform Representation"
+        "Strategic Technology Partnerships: Built and scaled strategic alliances with OEMs, ISVs, and channel partners to accelerate regional market entry and revenue growth.",
+        "Immersive Technology Consulting: Advised enterprises on XR use cases, ROI, and deployment models, translating business needs into executable programs.",
+        "Enterprise XR & Digital Solutions: Delivered end-to-end XR solutions (hardware, software, integration) for remote assistance, collaboration, and field operations.",
+        "Interactive Experience Design: Designed user-centric, interactive XR experiences aligned to learning outcomes, adoption, and measurable engagement.",
+        "VR/AR Training & Simulation Solutions: Developed VR/AR training and simulation programs for HSE, soft-skills, and technical readiness with performance analytics.",
+        "Software & Platform Representation: Represented and commercialized software/platform portfolios, managing GTM, partner enablement, and enterprise pipeline development."
       ]
     },
     {
@@ -83,10 +83,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative pt-40 pb-20 overflow-hidden">
         <div className="container relative z-10 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-8 reveal">
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-            <span className="text-sm font-medium tracking-wide text-primary uppercase">Business Development & Consultancy</span>
-          </div>
+
           
           <h1 className="font-display font-bold text-5xl md:text-7xl lg:text-8xl tracking-tight mb-8 leading-[1.1] reveal">
             Zero Limits. <br />
