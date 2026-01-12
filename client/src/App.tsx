@@ -12,6 +12,7 @@ import PrivacyPolicy from '@/pages/PrivacyPolicy';
 import TermsOfService from '@/pages/TermsOfService';
 import About from "./pages/About";
 import WorkExamples from "./pages/WorkExamples";
+import ThankYou from "./pages/ThankYou";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
@@ -27,6 +28,7 @@ function Router() {
       <Route path="/privacy-policy" component={PrivacyPolicy} />
       <Route path="/terms-of-service" component={TermsOfService} />
       <Route path={"/about"} component={About} />
+      <Route path="/thank-you" component={ThankYou} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

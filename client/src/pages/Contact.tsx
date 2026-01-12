@@ -209,7 +209,7 @@ export default function Contact() {
               <h3 className="font-display font-bold text-3xl mb-8 text-center">Schedule a Call</h3>
               <div 
                 className="calendly-inline-widget w-full" 
-                data-url="https://calendly.com/d/ct9r-hgx-ny5?background_color=0f172a&text_color=f8fafc&primary_color=0ea5e9" 
+                data-url="https://calendly.com/najimasri-zer0point/30min?background_color=0f172a&text_color=f8fafc&primary_color=0ea5e9" 
                 style={{ minWidth: '320px', height: '700px' }} 
               />
             </div>
