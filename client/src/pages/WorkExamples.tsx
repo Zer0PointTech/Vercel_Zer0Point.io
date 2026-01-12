@@ -84,32 +84,32 @@ export default function WorkExamples() {
     {
       title: "Next World VR Product Reel",
       description: "35-second showcase of our Next World VR platform capabilities",
-      src: "https://zer0point.io/MarketingPack/VIDEOS/Promo%20Reels/35%20sec%20Next%20World%20-%20Product%20Reel%20(with%20BGM).mp4"
+      youtubeId: "tB42umIv54w" // Using "Next World: New In-VR Tutorial" as a close match for product reel/intro
     },
     {
       title: "VR Trainer Onboarding",
       description: "Complete onboarding experience for VR training instructors",
-      src: "https://zer0point.io/MarketingPack/VIDEOS/compressed/Next%20World%20-%20VR%20Trainer%20Onboarding%20Day_compressed.mp4"
+      youtubeId: "I9YCn4oKU2I"
     },
     {
       title: "Fire Extinguisher Skills Demo",
       description: "Interactive fire safety training demonstration",
-      src: "https://zer0point.io/MarketingPack/VIDEOS/compressed/Fire%20Extinguisher%20Skills_compressed.mp4"
+      youtubeId: "5ck72Ukyq5g"
     },
     {
       title: "Hand Safety Training",
       description: "Comprehensive hand safety protocols in VR",
-      src: "https://zer0point.io/MarketingPack/VIDEOS/compressed/Hand%20Safety_compressed.mp4"
+      youtubeId: "V-FnGxMXPFU"
     },
     {
       title: "Electric Vehicle Safety Demo",
       description: "EV depower and initialization training module",
-      src: "https://zer0point.io/MarketingPack/VIDEOS/Safety%20Training/NW%20Depower%20and%20Initialise%20Electric%20Vehicle%20Demo%20Video%20(muted).mp4"
+      youtubeId: "Km1lQ3FvL1g"
     },
     {
       title: "Bodyswaps Platform Trailer",
       description: "Soft skills training platform demonstration",
-      src: "https://zer0point.io/MarketingPack/VIDEOS/compressed/Bodyswaps%20Platform%20Trailer%20-%20social%20edit_compressed.mp4"
+      youtubeId: "2JII41NSOk4"
     }
   ];
 
@@ -316,11 +316,12 @@ export default function WorkExamples() {
                 {demoVideos.map((video, idx) => (
                   <Card key={idx} className="glass-card border-white/10 bg-transparent overflow-hidden group hover:border-primary/50 transition-all duration-300">
                     <div className="relative aspect-video bg-black">
-                      <video 
-                        src={video.src}
-                        controls
+                      <iframe
+                        src={`https://www.youtube.com/embed/${video.youtubeId}`}
+                        title={video.title}
                         className="w-full h-full object-cover"
-                        poster={galleryImages[idx]?.src || undefined}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
                       />
                     </div>
                     <CardHeader className="p-6 text-left">
