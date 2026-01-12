@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import {
@@ -8,10 +8,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Mail, MapPin, Send, Loader2, CheckCircle2, Home } from 'lucide-react';
+import { Mail, MapPin, Send, Loader2, CheckCircle2, Home, Shield } from 'lucide-react';
 import { MapView } from '@/components/Map';
 import SEO from '@/components/SEO';
-import ReCAPTCHA from "react-google-recaptcha";
 import { Link, useLocation } from 'wouter';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
@@ -19,13 +18,28 @@ import { trpc } from '@/lib/trpc';
 
 import { toast } from 'sonner';
 
+// reCAPTCHA Enterprise Site Key
+const RECAPTCHA_SITE_KEY = "6LckNUgsAAAAAGyCVS0ncnWBwEDFXHudsCi8P5AD";
+
+// Declare grecaptcha types
+declare global {
+  interface Window {
+    grecaptcha: {
+      enterprise: {
+        ready: (callback: () => void) => void;
+        execute: (siteKey: string, options: { action: string }) => Promise<string>;
+      };
+    };
+  }
+}
+
 export default function Contact() {
   const [, setLocation] = useLocation();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
   const [phone, setPhone] = useState<string | undefined>('');
-  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const [recaptchaLoaded, setRecaptchaLoaded] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -39,7 +53,6 @@ export default function Contact() {
       setFormData({ name: '', email: '', subject: '', message: '' });
       setPhone('');
       setPrivacyAccepted(false);
-      recaptchaRef.current?.reset();
       setIsSubmitting(false);
     },
     onError: (error) => {
@@ -48,6 +61,28 @@ export default function Contact() {
     }
   });
 
+  // Load reCAPTCHA Enterprise script
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = `https://www.google.com/recaptcha/enterprise.js?render=${RECAPTCHA_SITE_KEY}`;
+    script.async = true;
+    script.onload = () => {
+      window.grecaptcha.enterprise.ready(() => {
+        setRecaptchaLoaded(true);
+      });
+    };
+    document.head.appendChild(script);
+
+    return () => {
+      // Cleanup script on unmount
+      const existingScript = document.querySelector(`script[src*="recaptcha/enterprise.js"]`);
+      if (existingScript) {
+        existingScript.remove();
+      }
+    };
+  }, []);
+
+  // Load Calendly widget
   useEffect(() => {
     const script = document.createElement('script');
     script.src = "https://assets.calendly.com/assets/external/widget.js";
@@ -64,6 +99,23 @@ export default function Contact() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
+  const executeRecaptcha = useCallback(async (): Promise<string | null> => {
+    if (!recaptchaLoaded || !window.grecaptcha?.enterprise) {
+      console.warn("reCAPTCHA not loaded yet");
+      return null;
+    }
+
+    try {
+      const token = await window.grecaptcha.enterprise.execute(RECAPTCHA_SITE_KEY, {
+        action: 'CONTACT_FORM'
+      });
+      return token;
+    } catch (error) {
+      console.error("reCAPTCHA execution failed:", error);
+      return null;
+    }
+  }, [recaptchaLoaded]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -77,13 +129,15 @@ export default function Contact() {
       return;
     }
 
-    const token = recaptchaRef.current?.getValue();
+    setIsSubmitting(true);
+
+    // Execute reCAPTCHA Enterprise
+    const token = await executeRecaptcha();
     if (!token) {
-      toast.error("Please complete the reCAPTCHA verification.");
+      toast.error("Security verification failed. Please refresh and try again.");
+      setIsSubmitting(false);
       return;
     }
-
-    setIsSubmitting(true);
 
     contactMutation.mutate({
       name: formData.name,
@@ -281,17 +335,15 @@ export default function Contact() {
                   </div>
                 </div>
 
-                <div className="flex justify-center pt-4">
-                  <ReCAPTCHA
-                    ref={recaptchaRef}
-                    sitekey="6LeENEgsAAAAAFsmOMGm17fCtmjgWICwr5YqA4UG"
-                    theme="dark"
-                  />
+                {/* reCAPTCHA Enterprise Badge */}
+                <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground pt-2">
+                  <Shield className="w-4 h-4" />
+                  <span>Protected by reCAPTCHA Enterprise</span>
                 </div>
 
                 <Button 
                   type="submit" 
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || !recaptchaLoaded}
                   className="w-full h-14 text-lg bg-primary text-background hover:bg-primary/90 font-bold rounded-lg shadow-lg shadow-primary/20 transition-all hover:shadow-primary/40"
                 >
                   {isSubmitting ? (
@@ -339,9 +391,20 @@ export default function Contact() {
           margin-right: 0.75rem;
         }
         .phone-input-dark .PhoneInputCountrySelect {
-          background: transparent !important;
+          background: #0f172a !important;
           color: #e5e7eb !important;
           border: none !important;
+        }
+        .phone-input-dark .PhoneInputCountrySelect option {
+          background: #0f172a !important;
+          color: #e5e7eb !important;
+          padding: 8px 12px;
+        }
+        .phone-input-dark .PhoneInputCountrySelect option:hover,
+        .phone-input-dark .PhoneInputCountrySelect option:focus,
+        .phone-input-dark .PhoneInputCountrySelect option:checked {
+          background: #1e293b !important;
+          color: #0ea5e9 !important;
         }
         .phone-input-dark .PhoneInputCountrySelectArrow {
           color: #9ca3af !important;
@@ -350,6 +413,9 @@ export default function Contact() {
         .phone-input-dark .PhoneInputCountryIcon {
           border-radius: 4px;
           overflow: hidden;
+        }
+        .grecaptcha-badge {
+          visibility: hidden !important;
         }
       `}</style>
     </div>
