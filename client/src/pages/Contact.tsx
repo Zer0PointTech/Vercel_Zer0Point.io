@@ -1,13 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Mail, MapPin, Send, Loader2 } from 'lucide-react';
 import { MapView } from '@/components/Map';
 import SEO from '@/components/SEO';
+import ReCAPTCHA from "react-google-recaptcha";
 
 import { toast } from 'sonner';
 
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -34,6 +36,13 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    const token = recaptchaRef.current?.getValue();
+    if (!token) {
+      toast.error("Please complete the reCAPTCHA verification.");
+      return;
+    }
+
     setIsSubmitting(true);
 
     // Simulate API call
@@ -44,6 +53,7 @@ export default function Contact() {
     });
 
     setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+    recaptchaRef.current?.reset();
     setIsSubmitting(false);
   };
 
@@ -196,6 +206,14 @@ export default function Contact() {
                     className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder:text-gray-600 min-h-[150px] resize-y"
                     placeholder="Tell us about your project or requirements..."
                   ></textarea>
+                </div>
+
+                <div className="flex justify-center">
+                  <ReCAPTCHA
+                    ref={recaptchaRef}
+                    sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI" // Test key - replace with your own
+                    theme="dark"
+                  />
                 </div>
 
                 <Button 
