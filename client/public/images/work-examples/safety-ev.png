@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zer0point - XR Excellence</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 40px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 8px 15px;
+            border-radius: 20px;
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        nav .logo-nav {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-right: auto;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #ffffff;
+            overflow-x: hidden;
+            background: #0a0a0a;
+        }
+
+        .container {
+            min-height: 100vh;
+            position: relative;
+            background: 
+                radial-gradient(ellipse at top left, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at bottom right, rgba(118, 75, 162, 0.15) 0%, transparent 50%),
+                linear-gradient(180deg, #0a0a0a 0%, #1a1a2e 100%);
+        }
+
+        .background-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .background-overlay::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(102, 126, 234, 0.03) 2px, rgba(102, 126, 234, 0.03) 4px),
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(118, 75, 162, 0.03) 2px, rgba(118, 75, 162, 0.03) 4px);
+            background-size: 100px 100px;
+        }
+
+        .background-overlay::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><defs><filter id="glow"><feGaussianBlur stdDeviation="3" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><g opacity="0.5"><circle cx="10%" cy="20%" r="2" fill="%23667eea" filter="url(%23glow)"><animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite"/></circle><circle cx="90%" cy="80%" r="2" fill="%23764ba2" filter="url(%23glow)"><animate attributeName="opacity" values="0;1;0" dur="3s" begin="0.5s" repeatCount="indefinite"/></circle><circle cx="80%" cy="10%" r="2" fill="%23667eea" filter="url(%23glow)"><animate attributeName="opacity" values="0;1;0" dur="3s" begin="1s" repeatCount="indefinite"/></circle><circle cx="20%" cy="90%" r="2" fill="%23764ba2" filter="url(%23glow)"><animate attributeName="opacity" values="0;1;0" dur="3s" begin="1.5s" repeatCount="indefinite"/></circle><circle cx="50%" cy="50%" r="2" fill="%23667eea" filter="url(%23glow)"><animate attributeName="opacity" values="0;1;0" dur="3s" begin="2s" repeatCount="indefinite"/></circle><path d="M 100 200 Q 300 100 500 200 T 900 200" stroke="%23667eea" stroke-width="0.5" fill="none" opacity="0.2"><animate attributeName="d" values="M 100 200 Q 300 100 500 200 T 900 200;M 100 200 Q 300 300 500 200 T 900 200;M 100 200 Q 300 100 500 200 T 900 200" dur="10s" repeatCount="indefinite"/></path><path d="M 1000 500 Q 1200 400 1400 500 T 1800 500" stroke="%23764ba2" stroke-width="0.5" fill="none" opacity="0.2"><animate attributeName="d" values="M 1000 500 Q 1200 400 1400 500 T 1800 500;M 1000 500 Q 1200 600 1400 500 T 1800 500;M 1000 500 Q 1200 400 1400 500 T 1800 500" dur="8s" repeatCount="indefinite"/></path></g><g opacity="0.1"><rect x="5%" y="30%" width="60" height="60" rx="10" fill="none" stroke="%23667eea" stroke-width="1" transform="rotate(45 5% 30%)"><animateTransform attributeName="transform" type="rotate" from="0 5% 30%" to="360 5% 30%" dur="20s" repeatCount="indefinite"/></rect><circle cx="95%" cy="70%" r="40" fill="none" stroke="%23764ba2" stroke-width="1"><animate attributeName="r" values="40;50;40" dur="5s" repeatCount="indefinite"/></circle><polygon points="50%,60% 52%,65% 48%,65%" fill="none" stroke="%23667eea" stroke-width="1"><animateTransform attributeName="transform" type="rotate" from="0 50% 62.5%" to="360 50% 62.5%" dur="15s" repeatCount="indefinite"/></polygon></g></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+            padding: 100px 40px 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .logo {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ffffff, #e0e7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+        }
+
+        .tagline {
+            font-size: 1.4rem;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+
+        .hero-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 100px;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .partnership-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .partnership-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .partner-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, #ffffff, #f0f9ff);
+            color: #1e40af;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 20px;
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+        }
+
+        .partner-name {
+            color: #ff6600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .partner-name:hover {
+            color: #ff8833;
+            text-decoration: underline;
+        }
+
+        .contact-section {
+            text-align: center;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #ffffff, #e0e7ff);
+            color: #1e40af;
+            padding: 18px 50px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.4);
+        }
+
+        .contact-email {
+            font-size: 1.1rem;
+            margin-top: 25px;
+            opacity: 0.8;
+            font-family: 'Courier New', monospace;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .content {
+                padding: 40px 20px;
+            }
+            
+            .partnership-section {
+                padding: 30px 20px;
+            }
+        }
+        .tech-lines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .tech-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.5), transparent);
+            height: 1px;
+            width: 200px;
+            animation: slide-horizontal 15s linear infinite;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+        }
+
+        .tech-line:nth-child(1) { top: 10%; animation-duration: 12s; animation-delay: 0s; }
+        .tech-line:nth-child(2) { top: 30%; animation-duration: 15s; animation-delay: 2s; }
+        .tech-line:nth-child(3) { top: 50%; animation-duration: 18s; animation-delay: 4s; }
+        .tech-line:nth-child(4) { top: 70%; animation-duration: 14s; animation-delay: 1s; }
+        .tech-line:nth-child(5) { top: 90%; animation-duration: 16s; animation-delay: 3s; }
+
+        .tech-line-vertical {
+            position: absolute;
+            background: linear-gradient(180deg, transparent, rgba(118, 75, 162, 0.5), transparent);
+            width: 1px;
+            height: 200px;
+            animation: slide-vertical 15s linear infinite;
+            box-shadow: 0 0 10px rgba(118, 75, 162, 0.3);
+        }
+
+        .tech-line-vertical:nth-child(6) { left: 10%; animation-duration: 13s; animation-delay: 0.5s; }
+        .tech-line-vertical:nth-child(7) { left: 30%; animation-duration: 17s; animation-delay: 2.5s; }
+        .tech-line-vertical:nth-child(8) { left: 50%; animation-duration: 14s; animation-delay: 1.5s; }
+        .tech-line-vertical:nth-child(9) { left: 70%; animation-duration: 16s; animation-delay: 3.5s; }
+        .tech-line-vertical:nth-child(10) { left: 90%; animation-duration: 15s; animation-delay: 4.5s; }
+
+        @keyframes slide-horizontal {
+            0% { transform: translateX(-200px); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateX(calc(100vw + 200px)); opacity: 0; }
+        }
+
+        @keyframes slide-vertical {
+            0% { transform: translateY(-200px); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(calc(100vh + 200px)); opacity: 0; }
+        }
+
+        .floating-shapes {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .shape {
+            position: absolute;
+            border: 2px solid rgba(102, 126, 234, 0.5);
+            animation: float-shape 20s infinite ease-in-out;
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.3),
+                        inset 0 0 20px rgba(102, 126, 234, 0.1);
+        }
+
+        .shape-1 {
+            width: 100px;
+            height: 100px;
+            border-radius: 20px;
+            top: 15%;
+            left: 10%;
+            animation-delay: 0s;
+            transform: rotate(45deg);
+            background: rgba(102, 126, 234, 0.05);
+        }
+
+        .shape-2 {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            top: 70%;
+            right: 15%;
+            animation-delay: 5s;
+            background: rgba(118, 75, 162, 0.05);
+            border-color: rgba(118, 75, 162, 0.5);
+            box-shadow: 0 0 20px rgba(118, 75, 162, 0.3),
+                        inset 0 0 20px rgba(118, 75, 162, 0.1);
+        }
+
+        .shape-3 {
+            width: 80px;
+            height: 80px;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            top: 40%;
+            right: 10%;
+            animation-delay: 10s;
+            border-color: rgba(118, 75, 162, 0.5);
+            background: rgba(118, 75, 162, 0.05);
+            box-shadow: 0 0 20px rgba(118, 75, 162, 0.3),
+                        inset 0 0 15px rgba(118, 75, 162, 0.1);
+        }
+
+        @keyframes float-shape {
+            0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
+            25% { transform: translateY(-30px) translateX(20px) rotate(90deg); }
+            50% { transform: translateY(20px) translateX(-20px) rotate(180deg); }
+            75% { transform: translateY(-20px) translateX(30px) rotate(270deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="background-overlay"></div>
+        <div class="tech-lines">
+            <div class="tech-line"></div>
+            <div class="tech-line"></div>
+            <div class="tech-line"></div>
+            <div class="tech-line"></div>
+            <div class="tech-line"></div>
+            <div class="tech-line-vertical"></div>
+            <div class="tech-line-vertical"></div>
+            <div class="tech-line-vertical"></div>
+            <div class="tech-line-vertical"></div>
+            <div class="tech-line-vertical"></div>
+        </div>
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        <nav>
+            <ul>
+                <li class="logo-nav">zer0point</li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="work-examples.html">Work Examples</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#team">Our Team</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="content">
+            <header>
+                <div class="logo">zer0point</div>
+                <div class="tagline">Pioneering the Future of Extended Reality</div>
+            </header>
+
+            <section class="hero-section">
+                <div class="hero-content">
+                    <h1>Expert XR Solutions for Tomorrow's World</h1>
+                    <p>We specialize in cutting-edge Extended Reality technologies, delivering immersive experiences that transform industries and reshape digital interactions.</p>
+                </div>
+                <div class="hero-visual">
+                </div>
+            </section>
+
+            <section style="display: flex; justify-content: center; gap: 30px; margin-bottom: 60px; flex-wrap: wrap;">
+                <div class="service-card">
+                    <div class="service-icon">🥽</div>
+                    <h3>Virtual Reality</h3>
+                    <p>Immersive VR experiences and applications</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3>Augmented Reality</h3>
+                    <p>Mobile AR solutions and interactive experiences</p>
+                </div>
+            </section>
+
+            <section id="services" class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🌐</div>
+                    <h3>Mixed Reality</h3>
+                    <p>Seamless blend of physical and digital worlds</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎮</div>
+                    <h3>Interactive Experiences</h3>
+                    <p>Engaging and intuitive XR applications</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏗️</div>
+                    <h3>Enterprise Solutions</h3>
+                    <p>Custom XR solutions for business transformation</p>
+                </div>
+            </section>
+
+            <section class="partnership-section">
+                <h2>Strategic Partnership</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9;">
+                    Proud technology partner leveraging cutting-edge innovations
+                </p>
+                <div class="partner-badge">
+                    ✨ Official Partner of <a href="https://www.blippar.com/ar-studio" target="_blank" class="partner-name">Blippar</a>
+                </div>
+                <p style="margin-top: 20px; opacity: 0.8;">
+                    Utilizing Blippar's advanced technology stack to deliver superior XR experiences
+                </p>
+            </section>
+
+            <section id="team" class="partnership-section">
+                <h2>Our Expert Team</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9;">
+                    Meet the talented professionals driving our XR innovations
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px;">
+                    <div style="background: rgba(255, 255, 255, 0.1); border-radius: 10px; padding: 20px; text-align: center;">
+                        <h3 style="margin-bottom: 10px; color: #ffffff;">Project Manager</h3>
+                        <p style="font-size: 1.1rem; font-weight: 500;">Daniel Khayat</p>
+                    </div>
+                    <div style="background: rgba(255, 255, 255, 0.1); border-radius: 10px; padding: 20px; text-align: center;">
+                        <h3 style="margin-bottom: 10px; color: #ffffff;">Technical Director</h3>
+                        <p style="font-size: 1.1rem; font-weight: 500;">Josh Cook</p>
+                    </div>
+                    <div style="background: rgba(255, 255, 255, 0.1); border-radius: 10px; padding: 20px; text-align: center;">
+                        <h3 style="margin-bottom: 10px; color: #ffffff;">Unity Lead</h3>
+                        <p style="font-size: 1.1rem; font-weight: 500;">Mukesh Kumar</p>
+                    </div>
+                    <div style="background: rgba(255, 255, 255, 0.1); border-radius: 10px; padding: 20px; text-align: center;">
+                        <h3 style="margin-bottom: 10px; color: #ffffff;">SAP Expert</h3>
+                        <p style="font-size: 1.1rem; font-weight: 500;">Abhijit Paul</p>
+                    </div>
+                </div>
+                <div style="margin-top: 30px; background: rgba(255, 255, 255, 0.08); border-radius: 10px; padding: 25px;">
+                    <h3 style="margin-bottom: 15px; color: #ffffff;">Supporting Teams</h3>
+                    <p style="font-size: 1.1rem; opacity: 0.9;">Other back-end technical support members</p>
+                    <p style="font-size: 1.1rem; opacity: 0.9;">Infrastructure and DevOps Team</p>
+                </div>
+            </section>
+
+            <section id="contact" class="contact-section">
+                <h2 style="font-size: 2.5rem; margin-bottom: 30px; font-weight: 600;">Ready to Transform Your Vision?</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 40px; opacity: 0.9;">
+                    Let's discuss how our XR expertise can elevate your project
+                </p>
+                <a href="/cdn-cgi/l/email-protection#701e111a191d11030219300a150240001f191e045e191f" class="contact-btn">Get In Touch</a>
+                <div class="contact-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e48d8a828ba49e8196d4948b8d8a90ca8d8b">[email&#160;protected]</a></div>
+            </section>
+        </div>
+    </div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

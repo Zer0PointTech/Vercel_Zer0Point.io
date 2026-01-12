@@ -27,27 +27,40 @@ export default function WorkExamples() {
   }, []);
 
   const galleryImages = [
-    { src: "https://zer0point.io/MarketingPack/VR%20PHOTOS/People%20in%20VR/2.jpg", title: "Immersive Learning Experience" },
-    { src: "https://zer0point.io/MarketingPack/VR%20PHOTOS/People%20in%20VR/3.jpg", title: "Confined Spaces Training" },
-    { src: "https://zer0point.io/MarketingPack/VR%20PHOTOS/People%20in%20VR/4.jpg", title: "Industrial Training" },
-    { src: "https://zer0point.io/MarketingPack/VR%20PHOTOS/People%20in%20VR/5.jpg", title: "Corporate Training" },
-    { src: "https://zer0point.io/MarketingPack/VR%20Screenshots/Safety%20Skills/Fire%20Extinguisher/image.png", title: "Safety Training Demo" },
-    { src: "https://zer0point.io/MarketingPack/VR%20Screenshots/Safety%20Skills/Working%20at%20Heights/image.png", title: "VR Training Modules" }
+    { src: "/images/work-examples/experience-1.jpg", title: "Immersive Learning Experience" },
+    { src: "/images/work-examples/experience-2.jpg", title: "Confined Spaces Training" },
+    { src: "/images/work-examples/experience-3.jpg", title: "Industrial Training" },
+    { src: "/images/work-examples/experience-4.jpg", title: "Corporate Training" },
+    { src: "/images/work-examples/safety-fire.png", title: "Safety Training Demo" },
+    { src: "/images/work-examples/safety-heights.png", title: "VR Training Modules" }
   ];
+
+  const safetyImages = [
+    { src: "/images/work-examples/safety-fire.png", title: "Fire Extinguisher Training" },
+    { src: "/images/work-examples/safety-heights.png", title: "Working at Heights" },
+    { src: "/images/work-examples/safety-forklift.png", title: "Forklift Inspection" },
+    { src: "/images/work-examples/safety-confined.jpg", title: "Confined Space Entry" },
+    { src: "/images/work-examples/safety-hand.jpg", title: "Hand Safety Protocols" },
+    { src: "/images/work-examples/safety-ev.jpg", title: "Electric Vehicle Safety" }
+  ];
+
+
+
+  const currentImages = activeTab === 'safety' ? safetyImages : galleryImages;
 
   const nextImage = useCallback((e?: React.MouseEvent) => {
     e?.stopPropagation();
     if (lightboxIndex !== null) {
-      setLightboxIndex((prev) => (prev === null ? null : (prev + 1) % galleryImages.length));
+      setLightboxIndex((prev) => (prev === null ? null : (prev + 1) % currentImages.length));
     }
-  }, [lightboxIndex, galleryImages.length]);
+  }, [lightboxIndex, currentImages.length]);
 
   const prevImage = useCallback((e?: React.MouseEvent) => {
     e?.stopPropagation();
     if (lightboxIndex !== null) {
-      setLightboxIndex((prev) => (prev === null ? null : (prev - 1 + galleryImages.length) % galleryImages.length));
+      setLightboxIndex((prev) => (prev === null ? null : (prev - 1 + currentImages.length) % currentImages.length));
     }
-  }, [lightboxIndex, galleryImages.length]);
+  }, [lightboxIndex, currentImages.length]);
 
   const closeLightbox = useCallback(() => {
     setLightboxIndex(null);
@@ -63,6 +76,8 @@ export default function WorkExamples() {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [lightboxIndex, closeLightbox, nextImage, prevImage]);
+
+
 
   const safetyModules = [
     "Hand Safety", "Hazard Identification", "Manual Handling", "Working Around Forklifts",
@@ -172,7 +187,7 @@ export default function WorkExamples() {
               <div className="p-6 pb-0">
                 <div className="relative w-full overflow-hidden rounded-xl border border-white/10">
                   <img 
-                    src="https://zer0point.io/MarketingPack/VR%20LIBRARY/VR%20Safety%20Library.png" 
+                    src="/images/work-examples/library-safety.png" 
                     alt="VR Safety Library"
                     loading="lazy"
                     className="w-full h-auto object-contain"
@@ -199,7 +214,7 @@ export default function WorkExamples() {
               <div className="p-6 pb-0">
                 <div className="relative w-full overflow-hidden rounded-xl border border-white/10">
                   <img 
-                    src="https://zer0point.io/MarketingPack/VR%20LIBRARY/VR%20Soft%20Skills%20Library.png" 
+                    src="/images/work-examples/library-softskills.png" 
                     alt="VR Soft Skills Library"
                     loading="lazy"
                     className="w-full h-auto object-contain"
@@ -288,12 +303,7 @@ export default function WorkExamples() {
 
             {activeTab === 'safety' && (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto animate-in fade-in zoom-in duration-500">
-                {/* Reusing gallery images as placeholders for safety training visuals if specific ones aren't provided, 
-                    or we can map specific safety training images here if available. 
-                    For now, using a subset or specific safety images if we had them. 
-                    Based on the original site, this tab shows similar grid of images but focused on safety.
-                    I'll use the first 3 gallery images as placeholders to demonstrate structure. */}
-                 {galleryImages.slice(0, 3).map((item, idx) => (
+                {safetyImages.map((item, idx) => (
                   <div key={idx} className="group relative rounded-xl overflow-hidden border border-white/10 bg-white/5 cursor-pointer">
                     <div className="aspect-video overflow-hidden">
                       <img 
@@ -301,6 +311,7 @@ export default function WorkExamples() {
                         alt={item.title}
                         loading="lazy"
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        onClick={() => setLightboxIndex(idx)}
                       />
                     </div>
                     <div className="p-4 text-left bg-white/5 border-t border-white/10">
@@ -398,13 +409,13 @@ export default function WorkExamples() {
             onClick={(e) => e.stopPropagation()}
           >
             <img 
-              src={galleryImages[lightboxIndex].src} 
-              alt={galleryImages[lightboxIndex].title}
+              src={currentImages[lightboxIndex].src} 
+              alt={currentImages[lightboxIndex].title}
               className="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl"
             />
             <div className="text-center">
-              <h3 className="text-xl font-medium text-white mb-1">{galleryImages[lightboxIndex].title}</h3>
-              <p className="text-white/70 text-sm">Image {lightboxIndex + 1} of {galleryImages.length}</p>
+              <h3 className="text-xl font-medium text-white mb-1">{currentImages[lightboxIndex].title}</h3>
+              <p className="text-white/70 text-sm">Image {lightboxIndex + 1} of {currentImages.length}</p>
             </div>
           </div>
         </div>
