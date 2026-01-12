@@ -37,9 +37,9 @@ export default function About() {
   return (
     <div className="min-h-screen pt-40 pb-20">
       <SEO 
-        title="About Us - Leadership & Vision" 
-        description="Meet the leadership team at Zer0Point Tech Ltd. Over 20 years of experience in driving growth, sustainability, and digital transformation."
-        keywords="Naji Masri, Business Leadership, Consulting Team, Zer0Point Founders, Executive Team"
+        title="About Us - Leadership & Expertise" 
+        description="Meet the Zer0Point Tech Ltd leadership team. We combine deep regional expertise with global best practices to drive growth in the GCC."
+        keywords="About Zer0Point, Leadership Team, GCC Consultants, Business Strategy Experts, Naji Masri, Daniel Khayat"
       />
       <div className="container">
         <motion.div

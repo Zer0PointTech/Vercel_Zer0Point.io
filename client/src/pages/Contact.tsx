@@ -49,9 +49,9 @@ export default function Contact() {
   return (
     <div className="min-h-screen text-foreground overflow-x-hidden font-sans selection:bg-primary/30">
       <SEO 
-        title="Contact Us - Get in Touch" 
-        description="Contact Zer0Point Tech Ltd for business inquiries, partnerships, and consultancy services in the UAE and KSA."
-        keywords="Contact Zer0Point, Business Inquiry, Dubai Office, Riyadh Office, Consulting Request"
+        title="Contact Us - Schedule a Call" 
+        description="Contact Zer0Point Tech Ltd for business inquiries, partnerships, and consultancy services in the UAE and KSA. Schedule a call with our experts."
+        keywords="Contact Zer0Point, Business Inquiry, Dubai Office, Riyadh Office, Consulting Request, Schedule Call"
       />
       <main className="pt-40 pb-20">
         <div className="container">

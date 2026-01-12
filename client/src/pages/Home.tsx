@@ -76,9 +76,9 @@ export default function Home() {
   return (
     <div className="min-h-screen text-foreground overflow-x-hidden selection:bg-primary selection:text-background">
       <SEO 
-        title="GCC Market Entry & Strategic Consultancy" 
-        description="Zer0Point Tech Ltd enables rapid, scalable market access in the UAE and KSA through proven frameworks, deep regional expertise, and digital transformation strategies."
-        keywords="GCC Market Entry, Business Development, Strategic Consultancy, UAE Expansion, KSA Market Access"
+        title="Home - Consultancy, Tech & Business Development" 
+        description="Zer0Point Tech Ltd enables rapid, scalable market access in the GCC through expert Consultancy, cutting-edge Tech solutions, and strategic Business Development."
+        keywords="Consultancy, Tech, Business Development, GCC Market Entry, Digital Transformation, Strategic Partnerships, UAE, KSA"
       />
       {/* Hero Section */}
       <section className="relative pt-40 pb-20 overflow-hidden">

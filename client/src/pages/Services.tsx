@@ -114,9 +114,9 @@ export default function Services() {
   return (
     <div className="min-h-screen text-foreground overflow-x-hidden selection:bg-primary selection:text-background">
       <SEO 
-        title="Our Services - Business Development & Consultancy" 
+        title="Services - Consultancy, Business Development & Entity Setup" 
         description="Comprehensive services including Market Entry Strategy, Entity Setup, and Digital Transformation for businesses expanding into the GCC region."
-        keywords="Market Entry Strategy, Entity Setup UAE, Digital Transformation Services, Business Development GCC, Corporate Structuring"
+        keywords="Market Entry Strategy, Entity Setup UAE, Digital Transformation Services, Business Development GCC, Corporate Structuring, Consultancy, Tax Planning"
       />
       {/* Hero Section */}
       <section className="relative pt-40 pb-20 overflow-hidden">
@@ -170,7 +170,7 @@ export default function Services() {
           </p>
           
           <Button size="lg" className="h-16 px-10 text-xl bg-primary text-background hover:bg-primary/90 rounded-none border border-primary/50 shadow-xl" onClick={() => setLocation('/contact')}>
-            Get a Custom Proposal <ArrowRight className="ml-2 w-5 h-5" />
+            Schedule a call <ArrowRight className="ml-2 w-5 h-5" />
           </Button>
         </div>
       </section>

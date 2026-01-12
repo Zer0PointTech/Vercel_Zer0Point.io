@@ -66,9 +66,9 @@ export default function Tech() {
   return (
     <div className="min-h-screen text-foreground overflow-x-hidden selection:bg-primary selection:text-background">
       <SEO 
-        title="Tech - AR/VR & Digital Twins" 
-        description="Cutting-edge AR/VR and Digital Twin solutions for enterprise training, marketing, and operational efficiency."
-        keywords="AR/VR Solutions, Digital Twins, Enterprise Metaverse, Virtual Reality Training, Augmented Reality Marketing"
+        title="Tech - XR, VR, AR & Digital Solutions" 
+        description="Cutting-edge XR, VR, AR, and Digital Twin solutions for enterprise training, marketing, and operational efficiency."
+        keywords="XR Solutions, VR Training, AR Marketing, Digital Twins, Enterprise Metaverse, Virtual Reality, Augmented Reality, Immersive Tech"
       />
       {/* Hero Section */}
       <section className="relative pt-40 pb-20 overflow-hidden">
@@ -93,7 +93,7 @@ export default function Tech() {
               className="h-14 px-8 text-lg bg-primary text-background hover:bg-primary/90 rounded-none border border-primary/50 shadow-[0_0_20px_rgba(var(--primary),0.3)] transition-all hover:shadow-[0_0_40px_rgba(var(--primary),0.5)]"
               onClick={() => setLocation('/contact')}
             >
-              Get In Touch <ArrowRight className="ml-2 w-5 h-5" />
+              Schedule a call <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
             <Button 
               size="lg" 
@@ -198,7 +198,7 @@ export default function Tech() {
           </p>
           
           <Button size="lg" className="h-16 px-10 text-xl bg-white text-background hover:bg-gray-200 rounded-none border-0 shadow-xl transition-transform hover:-translate-y-1" onClick={() => setLocation('/contact')}>
-            Contact Us
+            Schedule a call
           </Button>
         </div>
       </section>
