@@ -2,6 +2,13 @@ import { describe, expect, it } from "vitest";
 import nodemailer from "nodemailer";
 
 describe("SMTP Configuration", () => {
+  it("validates EMAIL_TO is configured", () => {
+    const EMAIL_TO = process.env.EMAIL_TO;
+    expect(EMAIL_TO).toBeDefined();
+    expect(EMAIL_TO).toBe("info@zer0point.io");
+    console.log(`[SMTP Test] EMAIL_TO is configured: ${EMAIL_TO}`);
+  });
+
   it("validates SMTP credentials are configured", async () => {
     const SMTP_USER = process.env.SMTP_USER;
     const SMTP_PASS = process.env.SMTP_PASS;
