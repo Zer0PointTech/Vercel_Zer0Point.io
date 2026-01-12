@@ -15,6 +15,7 @@ import WorkExamples from "./pages/WorkExamples";
 import ThankYou from "./pages/ThankYou";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 
 
 function Router() {
@@ -71,6 +72,7 @@ function App() {
         <TooltipProvider>
           <Toaster />
           <div className="relative z-10 flex flex-col min-h-screen">
+            <ScrollToTop />
             <Navbar />
             <main className="flex-grow">
               <Router />

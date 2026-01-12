@@ -147,15 +147,21 @@ export default function Tech() {
       <section className="py-32 relative border-t border-white/5">
         <div className="container text-center reveal">
           <h2 className="font-display font-bold text-4xl md:text-5xl mb-12">Strategic Partnership</h2>
-          <div className="max-w-3xl mx-auto p-8 border border-white/10 bg-white/5 rounded-2xl backdrop-blur-sm">
+          <a 
+            href="https://www.blippar.com/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="block max-w-3xl mx-auto p-8 rounded-2xl transition-transform hover:scale-[1.02] duration-300 cursor-pointer"
+            style={{ backgroundColor: '#ffaa01' }}
+          >
             <div className="flex flex-col items-center gap-6">
-              <Sparkles className="w-16 h-16 text-primary animate-pulse" />
+              <Sparkles className="w-16 h-16 text-white animate-pulse" />
               <h3 className="text-2xl font-bold text-white">Official Partner of Blippar</h3>
-              <p className="text-lg text-muted-foreground">
+              <p className="text-lg text-white/90">
                 Proud technology partner leveraging cutting-edge innovations. Utilizing Blippar's advanced technology stack to deliver superior XR experiences.
               </p>
             </div>
-          </div>
+          </a>
         </div>
       </section>
 
