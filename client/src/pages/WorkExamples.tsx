@@ -6,6 +6,7 @@ import { HardHat, Users, Truck, Flame, Zap, Building, MonitorPlay, ShieldCheck, 
 export default function WorkExamples() {
   const observerRef = useRef<IntersectionObserver | null>(null);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [activeTab, setActiveTab] = useState<'experiences' | 'safety' | 'videos'>('experiences');
 
   useEffect(() => {
     observerRef.current = new IntersectionObserver((entries) => {
@@ -26,12 +27,12 @@ export default function WorkExamples() {
   }, []);
 
   const galleryImages = [
-    "https://zer0point.io/MarketingPack/VR%20PHOTOS/People%20in%20VR/2.jpg",
-    "https://zer0point.io/MarketingPack/VR%20PHOTOS/People%20in%20VR/3.jpg",
-    "https://zer0point.io/MarketingPack/VR%20PHOTOS/People%20in%20VR/4.jpg",
-    "https://zer0point.io/MarketingPack/VR%20PHOTOS/People%20in%20VR/5.jpg",
-    "https://zer0point.io/MarketingPack/VR%20Screenshots/Safety%20Skills/Fire%20Extinguisher/image.png",
-    "https://zer0point.io/MarketingPack/VR%20Screenshots/Safety%20Skills/Working%20at%20Heights/image.png"
+    { src: "https://zer0point.io/MarketingPack/VR%20PHOTOS/People%20in%20VR/2.jpg", title: "Immersive Learning Experience" },
+    { src: "https://zer0point.io/MarketingPack/VR%20PHOTOS/People%20in%20VR/3.jpg", title: "Confined Spaces Training" },
+    { src: "https://zer0point.io/MarketingPack/VR%20PHOTOS/People%20in%20VR/4.jpg", title: "Industrial Training" },
+    { src: "https://zer0point.io/MarketingPack/VR%20PHOTOS/People%20in%20VR/5.jpg", title: "Corporate Training" },
+    { src: "https://zer0point.io/MarketingPack/VR%20Screenshots/Safety%20Skills/Fire%20Extinguisher/image.png", title: "Safety Training Demo" },
+    { src: "https://zer0point.io/MarketingPack/VR%20Screenshots/Safety%20Skills/Working%20at%20Heights/image.png", title: "VR Training Modules" }
   ];
 
   const nextImage = useCallback((e?: React.MouseEvent) => {
@@ -226,54 +227,110 @@ export default function WorkExamples() {
       {/* Experience Gallery Section */}
       <section className="py-20 relative overflow-hidden bg-white/5">
         <div className="container relative z-10 text-center reveal">
-          <div className="inline-flex items-center justify-center p-4 rounded-full bg-primary/10 mb-8">
-            <MonitorPlay className="w-8 h-8 text-primary" />
-          </div>
-          <h2 className="font-display font-bold text-4xl md:text-5xl mb-6">VR Experience Gallery</h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-12">
-            From confined space training to complex industrial simulations, our gallery showcases the depth and breadth of our immersive learning solutions.
-          </p>
+          <h2 className="font-display font-bold text-4xl md:text-5xl mb-12">VR Experience Gallery</h2>
           
-          {/* Demo Videos Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto mb-20">
-            {demoVideos.map((video, idx) => (
-              <Card key={idx} className="glass-card border-white/10 bg-transparent overflow-hidden group hover:border-primary/50 transition-all duration-300">
-                <div className="relative aspect-video bg-black">
-                  <video 
-                    src={video.src}
-                    controls
-                    className="w-full h-full object-cover"
-                    poster={galleryImages[idx] || undefined} // Fallback poster if available
-                  />
-                </div>
-                <CardHeader className="p-6">
-                  <CardTitle className="font-display text-lg text-white mb-2">{video.title}</CardTitle>
-                  <p className="text-sm text-muted-foreground">{video.description}</p>
-                </CardHeader>
-              </Card>
-            ))}
+          {/* Tab Navigation */}
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
+            <button
+              onClick={() => setActiveTab('experiences')}
+              className={`px-8 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
+                activeTab === 'experiences' 
+                  ? 'bg-white/10 text-white border border-white/20' 
+                  : 'bg-transparent text-muted-foreground hover:text-white border border-transparent'
+              }`}
+            >
+              Experiences
+            </button>
+            <button
+              onClick={() => setActiveTab('safety')}
+              className={`px-8 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
+                activeTab === 'safety' 
+                  ? 'bg-white/10 text-white border border-white/20' 
+                  : 'bg-transparent text-muted-foreground hover:text-white border border-transparent'
+              }`}
+            >
+              Safety Training
+            </button>
+            <button
+              onClick={() => setActiveTab('videos')}
+              className={`px-8 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
+                activeTab === 'videos' 
+                  ? 'bg-white/10 text-white border border-white/20' 
+                  : 'bg-transparent text-muted-foreground hover:text-white border border-transparent'
+              }`}
+            >
+              Demo Videos
+            </button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {galleryImages.map((src, idx) => (
-              <div 
-                key={idx} 
-                className="group relative aspect-video rounded-xl overflow-hidden border border-white/10 bg-white/5 cursor-pointer"
-                onClick={() => setLightboxIndex(idx)}
-              >
-                <img 
-                  src={src} 
-                  alt={`VR Experience ${idx + 1}`}
-                  loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                  <span className="text-white font-medium flex items-center gap-2">
-                    <MonitorPlay className="w-4 h-4" /> View Experience
-                  </span>
-                </div>
+          {/* Tab Content */}
+          <div className="min-h-[600px]">
+            {activeTab === 'experiences' && (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto animate-in fade-in zoom-in duration-500">
+                {galleryImages.map((item, idx) => (
+                  <div key={idx} className="group relative rounded-xl overflow-hidden border border-white/10 bg-white/5 cursor-pointer">
+                    <div className="aspect-video overflow-hidden">
+                      <img 
+                        src={item.src} 
+                        alt={item.title}
+                        loading="lazy"
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        onClick={() => setLightboxIndex(idx)}
+                      />
+                    </div>
+                    <div className="p-4 text-left bg-white/5 border-t border-white/10">
+                      <h3 className="text-lg font-medium text-white">{item.title}</h3>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+            )}
+
+            {activeTab === 'safety' && (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto animate-in fade-in zoom-in duration-500">
+                {/* Reusing gallery images as placeholders for safety training visuals if specific ones aren't provided, 
+                    or we can map specific safety training images here if available. 
+                    For now, using a subset or specific safety images if we had them. 
+                    Based on the original site, this tab shows similar grid of images but focused on safety.
+                    I'll use the first 3 gallery images as placeholders to demonstrate structure. */}
+                 {galleryImages.slice(0, 3).map((item, idx) => (
+                  <div key={idx} className="group relative rounded-xl overflow-hidden border border-white/10 bg-white/5 cursor-pointer">
+                    <div className="aspect-video overflow-hidden">
+                      <img 
+                        src={item.src} 
+                        alt={item.title}
+                        loading="lazy"
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                    </div>
+                    <div className="p-4 text-left bg-white/5 border-t border-white/10">
+                      <h3 className="text-lg font-medium text-white">{item.title}</h3>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {activeTab === 'videos' && (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto animate-in fade-in zoom-in duration-500">
+                {demoVideos.map((video, idx) => (
+                  <Card key={idx} className="glass-card border-white/10 bg-transparent overflow-hidden group hover:border-primary/50 transition-all duration-300">
+                    <div className="relative aspect-video bg-black">
+                      <video 
+                        src={video.src}
+                        controls
+                        className="w-full h-full object-cover"
+                        poster={galleryImages[idx]?.src || undefined}
+                      />
+                    </div>
+                    <CardHeader className="p-6 text-left">
+                      <CardTitle className="font-display text-lg text-white mb-2">{video.title}</CardTitle>
+                      <p className="text-sm text-muted-foreground">{video.description}</p>
+                    </CardHeader>
+                  </Card>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -336,16 +393,17 @@ export default function WorkExamples() {
           </button>
 
           <div 
-            className="relative max-w-7xl max-h-[90vh] w-full flex items-center justify-center"
+            className="relative max-w-7xl max-h-[90vh] w-full flex flex-col items-center justify-center gap-4"
             onClick={(e) => e.stopPropagation()}
           >
             <img 
-              src={galleryImages[lightboxIndex]} 
-              alt={`Gallery Image ${lightboxIndex + 1}`}
-              className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl"
+              src={galleryImages[lightboxIndex].src} 
+              alt={galleryImages[lightboxIndex].title}
+              className="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl"
             />
-            <div className="absolute bottom-[-3rem] left-0 right-0 text-center text-white/70">
-              Image {lightboxIndex + 1} of {galleryImages.length}
+            <div className="text-center">
+              <h3 className="text-xl font-medium text-white mb-1">{galleryImages[lightboxIndex].title}</h3>
+              <p className="text-white/70 text-sm">Image {lightboxIndex + 1} of {galleryImages.length}</p>
             </div>
           </div>
         </div>
