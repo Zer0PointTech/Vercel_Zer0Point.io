@@ -85,7 +85,7 @@ export default function Home() {
             <Button 
               size="lg" 
               className="h-14 px-8 text-lg bg-primary text-background hover:bg-primary/90 rounded-none border border-primary/50 shadow-[0_0_20px_rgba(var(--primary),0.3)] transition-all hover:shadow-[0_0_40px_rgba(var(--primary),0.5)]"
-              onClick={() => window.open('https://calendly.com/zer0point', '_blank')}
+              onClick={() => window.open('https://calendly.com/d/ct9r-hgx-ny5', '_blank')}
             >
               Schedule a call <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
@@ -192,8 +192,8 @@ export default function Home() {
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <Button size="lg" className="h-16 px-10 text-xl bg-white text-background hover:bg-gray-200 rounded-none border-0 shadow-xl transition-transform hover:-translate-y-1" onClick={() => setLocation('/contact')}>
-              Schedule a Consultation
+            <Button size="lg" className="h-16 px-10 text-xl bg-white text-background hover:bg-gray-200 rounded-none border-0 shadow-xl transition-transform hover:-translate-y-1" onClick={() => window.open('https://calendly.com/d/ct9r-hgx-ny5', '_blank')}>
+              Schedule a call
             </Button>
           </div>
         </div>

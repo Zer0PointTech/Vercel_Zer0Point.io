@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Mail, MapPin, Send, Loader2 } from 'lucide-react';
 import { MapView } from '@/components/Map';
@@ -14,6 +14,17 @@ export default function Contact() {
     subject: '',
     message: ''
   });
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = "https://assets.calendly.com/assets/external/widget.js";
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -49,7 +60,7 @@ export default function Contact() {
               Get in <span className="text-gradient">Touch</span>
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed mb-8 max-w-2xl mx-auto">
-              Ready to accelerate your growth in the GCC? Connect with our experts today for a strategic consultation.
+              Ready to accelerate your growth in the GCC? Connect with our experts today for a strategic call.
             </p>
           </div>
 
@@ -189,6 +200,18 @@ export default function Contact() {
                   )}
                 </Button>
               </form>
+            </div>
+          </div>
+
+          {/* Calendly Widget */}
+          <div className="mt-20 max-w-6xl mx-auto animate-in fade-in slide-in-from-bottom-10 duration-700 delay-300">
+            <div className="glass-card p-8 md:p-10 rounded-2xl">
+              <h3 className="font-display font-bold text-3xl mb-8 text-center">Schedule a Call</h3>
+              <div 
+                className="calendly-inline-widget w-full" 
+                data-url="https://calendly.com/d/ct9r-hgx-ny5?background_color=0f172a&text_color=f8fafc&primary_color=0ea5e9" 
+                style={{ minWidth: '320px', height: '700px' }} 
+              />
             </div>
           </div>
         </div>
