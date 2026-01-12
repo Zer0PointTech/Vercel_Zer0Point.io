@@ -1,6 +1,8 @@
 import nodemailer from 'nodemailer';
 
 // Email configuration from environment variables
+// Use smtp.gmail.com for App Password authentication
+// Use smtp-relay.gmail.com only for IP-allowlisted SMTP relay
 const SMTP_HOST = process.env.SMTP_HOST || 'smtp.gmail.com';
 const SMTP_PORT = parseInt(process.env.SMTP_PORT || '587');
 const SMTP_USER = process.env.SMTP_USER || '';
