@@ -9,3 +9,16 @@
 - [ ] Update Team section with Naji Masri and Daniel Khayat photos and info
 - [ ] Verify all links and buttons
 - [ ] Deploy updated website
+
+- [x] Remove Calendly widget from all pages
+- [x] Update Home page buttons (remove View All Services, center Schedule a call)
+- [x] Fix Contact page dropdown background color
+- [x] Add "Tech" to subject dropdown, remove "Other Inquiry"
+- [x] Add mandatory mobile number field with country code selector
+- [x] Add Privacy Policy checkbox (UAE/GDPR compliant)
+- [x] Add Thank You message after form submission
+- [x] Integrate reCAPTCHA Enterprise for spam protection
+- [x] Configure Gmail SMTP for email delivery to info@zer0point.io
+- [x] Fix phone input dropdown styling (dark theme)
+- [x] Make mobile number mandatory with validation
+- [x] Fix email delivery to go to info@zer0point.io (not personal Gmail)

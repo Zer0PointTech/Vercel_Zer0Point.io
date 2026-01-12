@@ -274,7 +274,7 @@ export default function Contact() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label htmlFor="phone" className="text-sm font-medium text-gray-300">Mobile Number</label>
+                    <label htmlFor="phone" className="text-sm font-medium text-gray-300">Mobile Number <span className="text-red-400">*</span></label>
                     <PhoneInput
                       international
                       defaultCountry="AE"

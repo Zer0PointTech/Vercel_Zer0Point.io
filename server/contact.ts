@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { publicProcedure, router } from "./_core/trpc";
-import { notifyOwner } from "./_core/notification";
+// notifyOwner removed - using direct email to info@zer0point.io instead
 import { sendContactEmail } from "./email";
 import { TRPCError } from "@trpc/server";
 
@@ -69,7 +69,7 @@ export const contactRouter = router({
       z.object({
         name: z.string().min(1, "Name is required"),
         email: z.string().email("Invalid email address"),
-        phone: z.string().min(1, "Phone number is required"),
+        phone: z.string().min(8, "Please enter a valid phone number with country code"),
         subject: z.string().min(1, "Subject is required"),
         message: z.string().min(1, "Message is required"),
         recaptchaToken: z.string().min(1, "reCAPTCHA verification is required"),
@@ -85,33 +85,7 @@ export const contactRouter = router({
         });
       }
 
-      // Format the notification content
-      const notificationContent = `
-📬 New Contact Form Submission
-
-**From:** ${input.name}
-**Email:** ${input.email}
-**Phone:** ${input.phone}
-**Subject:** ${input.subject}
-
-**Message:**
-${input.message}
-
----
-Submitted at: ${new Date().toLocaleString("en-AE", { timeZone: "Asia/Dubai" })} (UAE Time)
-      `.trim();
-
-      // Send notification to owner (in-app notification)
-      const notificationSent = await notifyOwner({
-        title: `New Contact: ${input.subject} from ${input.name}`,
-        content: notificationContent,
-      });
-
-      if (!notificationSent) {
-        console.warn("[Contact] Failed to send in-app notification");
-      }
-
-      // Also send email if SMTP is configured
+      // Send email directly to info@zer0point.io
       const emailSent = await sendContactEmail({
         name: input.name,
         email: input.email,

@@ -8,7 +8,8 @@ const SMTP_PORT = parseInt(process.env.SMTP_PORT || '587');
 const SMTP_USER = process.env.SMTP_USER || '';
 const SMTP_PASS = process.env.SMTP_PASS || '';
 const EMAIL_FROM = process.env.EMAIL_FROM || 'noreply@zer0point.io';
-const EMAIL_TO = process.env.EMAIL_TO || 'info@zer0point.io';
+// Hardcode the recipient email to ensure delivery to the correct address
+const EMAIL_TO = 'info@zer0point.io';
 
 // Create transporter only if credentials are configured
 let transporter: nodemailer.Transporter | null = null;
@@ -38,6 +39,9 @@ export interface ContactEmailData {
 
 export async function sendContactEmail(data: ContactEmailData): Promise<boolean> {
   const transport = getTransporter();
+  
+  // Debug logging
+  console.log('[Email] EMAIL_TO configured as:', EMAIL_TO);
   
   if (!transport) {
     console.warn('[Email] SMTP not configured, skipping email send');
