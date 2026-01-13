@@ -4,6 +4,6 @@
   "installCommand": "pnpm install",
   "framework": null,
   "rewrites": [
-    { "source": "/((?!api/).*)", "destination": "/index.html" }
+    { "source": "/((?!api/|favicon|apple-touch-icon|android-chrome|site\\.webmanifest|robots\\.txt|sitemap\\.xml|assets/|images/).*)", "destination": "/index.html" }
   ]
 }
