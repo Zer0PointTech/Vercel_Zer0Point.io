@@ -63,3 +63,8 @@ pnpm build:vercel
 ## License
 
 MIT
+
+
+## Version
+
+Deployed: January 13, 2026
