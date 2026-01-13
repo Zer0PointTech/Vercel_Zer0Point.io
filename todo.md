@@ -40,3 +40,7 @@
 - [x] Setup complete SEO meta tags for all pages
 
 - [x] Add favicon to browser tab
+
+- [x] Fix favicon not displaying on Vercel
+- [x] Update map to show exact office location (not just DIFC)
+- [x] Fix reCAPTCHA - updated Site Key to match Google Cloud Console

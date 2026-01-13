@@ -10,7 +10,7 @@ const EMAIL_TO = "info@zer0point.io";
 const EMAIL_BCC = "najimasri@zer0point.io";
 
 // reCAPTCHA configuration
-const RECAPTCHA_SITE_KEY = "6LdazkgsAAAAADErTkGR5KnN7w-n04qdfxHXRfYA";
+const RECAPTCHA_SITE_KEY = "6LdB_0gsAAAAHt4bj7ldDQk8Ro2nt28ViiAtdWC";
 const RECAPTCHA_PROJECT_ID = "zer0point-484203";
 const RECAPTCHA_API_KEY = process.env.RECAPTCHA_API_KEY || "";
 
