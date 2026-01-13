@@ -19,7 +19,7 @@ import { trpc } from '@/lib/trpc';
 import { toast } from 'sonner';
 
 // reCAPTCHA Enterprise Site Key
-const RECAPTCHA_SITE_KEY = "6LckNUgsAAAAAGyCVS0ncnWBwEDFXHudsCi8P5AD";
+const RECAPTCHA_SITE_KEY = "6LdazkgsAAAAADErTkGR5KnN7w-n04qdfxHXRfYA";
 
 // Declare grecaptcha types
 declare global {

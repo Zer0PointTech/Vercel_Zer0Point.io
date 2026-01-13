@@ -5,19 +5,16 @@ import { sendContactEmail } from "./email";
 import { TRPCError } from "@trpc/server";
 
 // reCAPTCHA Enterprise configuration
-const RECAPTCHA_SITE_KEY = "6LckNUgsAAAAAGyCVS0ncnWBwEDFXHudsCi8P5AD";
-const RECAPTCHA_PROJECT_ID = process.env.RECAPTCHA_PROJECT_ID || "zer0point-consulting";
+const RECAPTCHA_SITE_KEY = "6LdazkgsAAAAADErTkGR5KnN7w-n04qdfxHXRfYA";
+const RECAPTCHA_PROJECT_ID = "zer0point-484203";
+const RECAPTCHA_API_KEY = process.env.RECAPTCHA_API_KEY || "AIzaSyBGj3Yy1Q-MRZKWjmbsLp0xEq0MD0EJ2kk";
 
 // Verify reCAPTCHA Enterprise token
 async function verifyRecaptchaEnterprise(token: string, action: string): Promise<boolean> {
   try {
     // Use the reCAPTCHA Enterprise API directly via REST
-    const apiKey = process.env.RECAPTCHA_API_KEY;
-    
-    // If no API key, use a simpler verification approach
-    // reCAPTCHA Enterprise can work with just the site key for basic verification
     const response = await fetch(
-      `https://recaptchaenterprise.googleapis.com/v1/projects/${RECAPTCHA_PROJECT_ID}/assessments?key=${apiKey || ''}`,
+      `https://recaptchaenterprise.googleapis.com/v1/projects/${RECAPTCHA_PROJECT_ID}/assessments?key=${RECAPTCHA_API_KEY}`,
       {
         method: "POST",
         headers: {
@@ -34,15 +31,18 @@ async function verifyRecaptchaEnterprise(token: string, action: string): Promise
     );
 
     if (!response.ok) {
+      const errorText = await response.text();
+      console.warn("[reCAPTCHA Enterprise] API call failed:", response.status, errorText);
       // If Enterprise API fails, fall back to accepting the token
       // The frontend reCAPTCHA still provides spam protection
-      console.warn("[reCAPTCHA Enterprise] API call failed, accepting token:", response.status);
       return true;
     }
 
     const data = await response.json();
     
-    // Check if the token is valid and the score is acceptable
+    console.log("[reCAPTCHA Enterprise] Response:", JSON.stringify(data, null, 2));
+    
+    // Check if the token is valid
     if (data.tokenProperties?.valid === false) {
       console.warn("[reCAPTCHA Enterprise] Invalid token:", data.tokenProperties?.invalidReason);
       return false;

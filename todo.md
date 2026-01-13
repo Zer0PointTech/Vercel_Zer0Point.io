@@ -22,3 +22,6 @@
 - [x] Fix phone input dropdown styling (dark theme)
 - [x] Make mobile number mandatory with validation
 - [x] Fix email delivery to go to info@zer0point.io (not personal Gmail)
+
+- [x] Add Naji (najimasri@zer0point.io) as BCC recipient for contact form emails
+- [x] Comprehensive website review before go-live

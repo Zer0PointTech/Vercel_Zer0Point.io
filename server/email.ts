@@ -10,6 +10,8 @@ const SMTP_PASS = process.env.SMTP_PASS || '';
 const EMAIL_FROM = process.env.EMAIL_FROM || 'noreply@zer0point.io';
 // Hardcode the recipient email to ensure delivery to the correct address
 const EMAIL_TO = 'info@zer0point.io';
+// BCC Naji to ensure he receives emails (workaround for Gmail sender filtering)
+const EMAIL_BCC = 'najimasri@zer0point.io';
 
 // Create transporter only if credentials are configured
 let transporter: nodemailer.Transporter | null = null;
@@ -120,6 +122,7 @@ Submitted at: ${new Date().toLocaleString("en-AE", { timeZone: "Asia/Dubai" })} 
     await transport.sendMail({
       from: `"Zer0Point Website" <${EMAIL_FROM}>`,
       to: EMAIL_TO,
+      bcc: EMAIL_BCC,
       replyTo: data.email,
       subject: `New Contact: ${data.subject} from ${data.name}`,
       text: textContent,
