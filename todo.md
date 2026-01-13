@@ -54,3 +54,6 @@
 
 - [x] Fix map - get correct Google Maps embed URL for DIFC Innovation Hub (not Al Safadi)
 - [x] Fix favicon - ensure it displays correctly on Vercel (36KB proper ICO)
+
+- [x] CRITICAL: Fix favicon - use EXACT Zer0Point logo (0. with cyan dot), NOT building icon
+- [x] CRITICAL: Fix map - must load DIFC Innovation Hub directly, not Al Safadi first

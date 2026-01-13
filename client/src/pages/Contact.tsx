@@ -142,7 +142,7 @@ export default function Contact() {
                     </div>
                     <div className="mt-6 w-full h-[300px] rounded-lg overflow-hidden border border-white/10">
                       <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3609.8693!2d55.2752528!3d25.2101353!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f439f688fe9ff%3A0x43c25d95a77e0b93!2sDIFC%20Innovation%20Hub!5e0!3m2!1sen!2sae!4v1768295097575!5m2!1sen!2sae"
+                        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=DIFC+Innovation+Hub,Dubai,UAE&zoom=17"
                         width="100%"
                         height="100%"
                         style={{ border: 0 }}
