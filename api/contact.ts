@@ -9,58 +9,6 @@ const SMTP_PASS = process.env.SMTP_PASS || "";
 const EMAIL_TO = "info@zer0point.io";
 const EMAIL_BCC = "najimasri@zer0point.io";
 
-// reCAPTCHA configuration
-const RECAPTCHA_SITE_KEY = "6LdB_0gsAAAAAHt4bj7ldDQk8Ro2nt28ViiAtdWC";
-const RECAPTCHA_PROJECT_ID = "zer0point-484203";
-const RECAPTCHA_API_KEY = process.env.RECAPTCHA_API_KEY || "";
-
-async function verifyRecaptcha(token: string): Promise<boolean> {
-  if (!RECAPTCHA_API_KEY) {
-    console.warn("[reCAPTCHA] No API key configured, allowing request");
-    return true;
-  }
-
-  try {
-    const response = await fetch(
-      `https://recaptchaenterprise.googleapis.com/v1/projects/${RECAPTCHA_PROJECT_ID}/assessments?key=${RECAPTCHA_API_KEY}`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          event: {
-            token: token,
-            siteKey: RECAPTCHA_SITE_KEY,
-            expectedAction: "CONTACT_FORM",
-          },
-        }),
-      }
-    );
-
-    if (!response.ok) {
-      console.warn("[reCAPTCHA] API call failed:", response.status);
-      return true; // Allow on API failure
-    }
-
-    const data = await response.json();
-    
-    if (data.tokenProperties?.valid === false) {
-      const invalidReason = data.tokenProperties?.invalidReason;
-      console.warn("[reCAPTCHA] Invalid token:", invalidReason);
-      // Allow on domain mismatch issues
-      if (invalidReason === "BROWSER_ERROR" || invalidReason === "INVALID_REASON_UNSPECIFIED") {
-        return true;
-      }
-      return false;
-    }
-
-    const score = data.riskAnalysis?.score || 0.5;
-    return score >= 0.3;
-  } catch (error) {
-    console.error("[reCAPTCHA] Error:", error);
-    return true; // Allow on error
-  }
-}
-
 async function sendEmail(data: {
   name: string;
   email: string;
@@ -69,7 +17,7 @@ async function sendEmail(data: {
   message: string;
 }): Promise<boolean> {
   if (!SMTP_USER || !SMTP_PASS) {
-    console.warn("[Email] SMTP not configured");
+    console.error("[Email] SMTP credentials not configured");
     return false;
   }
 
@@ -140,7 +88,7 @@ async function sendEmail(data: {
       subject: `New Contact: ${data.subject} from ${data.name}`,
       html: htmlContent,
     });
-    console.log("[Email] Sent successfully");
+    console.log("[Email] Sent successfully to", EMAIL_TO, "with BCC to", EMAIL_BCC);
     return true;
   } catch (error) {
     console.error("[Email] Failed:", error);
@@ -163,30 +111,32 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    const { name, email, phone, subject, message, recaptchaToken } = req.body;
+    const { name, email, phone, subject, message } = req.body;
 
     // Validate required fields
     if (!name || !email || !phone || !subject || !message) {
       return res.status(400).json({ error: "All fields are required" });
     }
 
-    // Verify reCAPTCHA
-    if (recaptchaToken) {
-      const isValid = await verifyRecaptcha(recaptchaToken);
-      if (!isValid) {
-        return res.status(400).json({ error: "Security verification failed" });
-      }
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({ error: "Invalid email address" });
     }
 
     // Send email
     const emailSent = await sendEmail({ name, email, phone, subject, message });
 
-    return res.status(200).json({
-      success: true,
-      message: emailSent
-        ? "Your message has been sent successfully!"
-        : "Message received (email notification pending)",
-    });
+    if (emailSent) {
+      return res.status(200).json({
+        success: true,
+        message: "Your message has been sent successfully!",
+      });
+    } else {
+      return res.status(500).json({
+        error: "Failed to send email. Please try again or contact us directly at info@zer0point.io",
+      });
+    }
   } catch (error) {
     console.error("[Contact API] Error:", error);
     return res.status(500).json({ error: "Internal server error" });

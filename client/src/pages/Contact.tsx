@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import {
@@ -8,27 +8,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Mail, MapPin, Send, Loader2, CheckCircle2, Home, Shield } from 'lucide-react';
+import { Mail, MapPin, Send, Loader2, CheckCircle2, Home } from 'lucide-react';
 import SEO from '@/components/SEO';
-import { Link, useLocation } from 'wouter';
+import { useLocation } from 'wouter';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import { toast } from 'sonner';
-
-// reCAPTCHA Enterprise Site Key
-const RECAPTCHA_SITE_KEY = "6LdB_0gsAAAAAHt4bj7ldDQk8Ro2nt28ViiAtdWC";
-
-// Declare grecaptcha types
-declare global {
-  interface Window {
-    grecaptcha: {
-      enterprise: {
-        ready: (callback: () => void) => void;
-        execute: (siteKey: string, options: { action: string }) => Promise<string>;
-      };
-    };
-  }
-}
 
 export default function Contact() {
   const [, setLocation] = useLocation();
@@ -36,33 +21,12 @@ export default function Contact() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
   const [phone, setPhone] = useState<string | undefined>('');
-  const [recaptchaLoaded, setRecaptchaLoaded] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     subject: '',
     message: ''
   });
-
-  // Load reCAPTCHA Enterprise script
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = `https://www.google.com/recaptcha/enterprise.js?render=${RECAPTCHA_SITE_KEY}`;
-    script.async = true;
-    script.onload = () => {
-      window.grecaptcha.enterprise.ready(() => {
-        setRecaptchaLoaded(true);
-      });
-    };
-    document.head.appendChild(script);
-
-    return () => {
-      const existingScript = document.querySelector(`script[src*="recaptcha/enterprise.js"]`);
-      if (existingScript) {
-        existingScript.remove();
-      }
-    };
-  }, []);
 
   // Load Calendly widget
   useEffect(() => {
@@ -81,23 +45,6 @@ export default function Contact() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const executeRecaptcha = useCallback(async (): Promise<string | null> => {
-    if (!recaptchaLoaded || !window.grecaptcha?.enterprise) {
-      console.warn("reCAPTCHA not loaded yet");
-      return null;
-    }
-
-    try {
-      const token = await window.grecaptcha.enterprise.execute(RECAPTCHA_SITE_KEY, {
-        action: 'CONTACT_FORM'
-      });
-      return token;
-    } catch (error) {
-      console.error("reCAPTCHA execution failed:", error);
-      return null;
-    }
-  }, [recaptchaLoaded]);
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -113,14 +60,6 @@ export default function Contact() {
 
     setIsSubmitting(true);
 
-    // Execute reCAPTCHA Enterprise
-    const token = await executeRecaptcha();
-    if (!token) {
-      toast.error("Security verification failed. Please refresh and try again.");
-      setIsSubmitting(false);
-      return;
-    }
-
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -133,7 +72,6 @@ export default function Contact() {
           phone: phone,
           subject: formData.subject,
           message: formData.message,
-          recaptchaToken: token,
         }),
       });
 
@@ -204,7 +142,7 @@ export default function Contact() {
                     </div>
                     <div className="mt-6 w-full h-[300px] rounded-lg overflow-hidden border border-white/10">
                       <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1000!2d55.2763263!3d25.2075206!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f439f688fe9ff%3A0x43c25d95a77e0b93!2sDIFC%20Innovation%20Hub!5e0!3m2!1sen!2sae!4v1704067200000!5m2!1sen!2sae"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3609.8693!2d55.2763263!3d25.2075206!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f4282b7f0e8a9%3A0x8c5f8c8c8c8c8c8c!2sDIFC%20Innovation%20Hub!5e0!3m2!1sen!2sae!4v1705000000000"
                         width="100%"
                         height="100%"
                         style={{ border: 0 }}
@@ -272,7 +210,7 @@ export default function Contact() {
                     />
                   </div>
                 </div>
-
+                
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label htmlFor="phone" className="text-sm font-medium text-gray-300">Mobile Number <span className="text-red-400">*</span></label>
@@ -281,26 +219,26 @@ export default function Contact() {
                       defaultCountry="AE"
                       value={phone}
                       onChange={setPhone}
-                      className="phone-input-dark w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all"
+                      className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all [&_.PhoneInputInput]:bg-transparent [&_.PhoneInputInput]:border-none [&_.PhoneInputInput]:outline-none [&_.PhoneInputInput]:text-white [&_.PhoneInputCountrySelect]:bg-[#1e293b] [&_.PhoneInputCountrySelect]:text-white"
                       placeholder="Enter phone number"
                     />
                   </div>
                   <div className="space-y-2">
-                    <label htmlFor="subject" className="text-sm font-medium text-gray-300">Subject</label>
+                    <label htmlFor="subject" className="text-sm font-medium text-gray-300">Subject <span className="text-red-400">*</span></label>
                     <Select 
                       value={formData.subject} 
                       onValueChange={(value) => setFormData(prev => ({ ...prev, subject: value }))}
                       required
                     >
-                      <SelectTrigger className="w-full h-[50px] bg-white/5 border-white/10 text-gray-300 focus:ring-primary">
+                      <SelectTrigger className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 h-auto focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all text-left">
                         <SelectValue placeholder="Select a topic" />
                       </SelectTrigger>
-                      <SelectContent className="bg-[#0f172a] border-white/10 text-gray-300">
-                        <SelectItem value="Business Development" className="focus:bg-primary/20 focus:text-primary cursor-pointer">Business Development</SelectItem>
-                        <SelectItem value="Consultancy" className="focus:bg-primary/20 focus:text-primary cursor-pointer">Consultancy</SelectItem>
-                        <SelectItem value="Tech" className="focus:bg-primary/20 focus:text-primary cursor-pointer">Tech</SelectItem>
-                        <SelectItem value="Entity Setup" className="focus:bg-primary/20 focus:text-primary cursor-pointer">Entity Setup</SelectItem>
-                        <SelectItem value="Partnership" className="focus:bg-primary/20 focus:text-primary cursor-pointer">Partnership Opportunity</SelectItem>
+                      <SelectContent className="bg-[#1e293b] border-white/10">
+                        <SelectItem value="Consultancy">Consultancy</SelectItem>
+                        <SelectItem value="Tech Solutions">Tech Solutions</SelectItem>
+                        <SelectItem value="Business Development">Business Development</SelectItem>
+                        <SelectItem value="Partnership">Partnership</SelectItem>
+                        <SelectItem value="Other">Other</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -314,38 +252,28 @@ export default function Contact() {
                     required
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder:text-gray-600 min-h-[150px] resize-y"
+                    rows={4}
+                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-none placeholder:text-gray-600"
                     placeholder="Tell us about your project or requirements..."
-                  ></textarea>
+                  />
                 </div>
 
-                <div className="flex items-start space-x-3 pt-2">
+                <div className="flex items-start space-x-3">
                   <Checkbox 
                     id="privacy" 
                     checked={privacyAccepted}
                     onCheckedChange={(checked) => setPrivacyAccepted(checked as boolean)}
-                    className="mt-1 border-white/30 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
+                    className="mt-1 border-white/20 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
                   />
-                  <div className="grid gap-1.5 leading-none">
-                    <label
-                      htmlFor="privacy"
-                      className="text-sm font-medium leading-relaxed text-muted-foreground peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                    >
-                      I agree to the <Link href="/privacy-policy" className="text-primary hover:underline">Privacy Policy</Link> and consent to the processing of my personal data in accordance with UAE laws and GDPR regulations.
-                    </label>
-                  </div>
-                </div>
-
-                {/* reCAPTCHA Enterprise Badge */}
-                <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground pt-2">
-                  <Shield className="w-4 h-4" />
-                  <span>Protected by reCAPTCHA Enterprise</span>
+                  <label htmlFor="privacy" className="text-sm text-muted-foreground leading-relaxed">
+                    I agree to the <a href="/privacy-policy" className="text-primary hover:underline">Privacy Policy</a> and consent to the processing of my personal data in accordance with UAE laws and GDPR regulations.
+                  </label>
                 </div>
 
                 <Button 
                   type="submit" 
-                  disabled={isSubmitting || !recaptchaLoaded}
-                  className="w-full h-14 text-lg bg-primary text-background hover:bg-primary/90 font-bold rounded-lg shadow-lg shadow-primary/20 transition-all hover:shadow-primary/40"
+                  disabled={isSubmitting}
+                  className="w-full bg-primary text-background hover:bg-primary/90 py-6 text-lg font-semibold group"
                 >
                   {isSubmitting ? (
                     <>
@@ -355,7 +283,7 @@ export default function Contact() {
                   ) : (
                     <>
                       Send Message
-                      <Send className="ml-2 h-5 w-5" />
+                      <Send className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                     </>
                   )}
                 </Button>
@@ -363,44 +291,26 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Calendly Widget */}
-          <div className="mt-20 max-w-6xl mx-auto animate-in fade-in slide-in-from-bottom-10 duration-700 delay-300">
-            <div className="glass-card p-8 md:p-10 rounded-2xl">
-              <h3 className="font-display font-bold text-3xl mb-8 text-center">Schedule a Call</h3>
+          {/* Calendly Section */}
+          <div className="max-w-6xl mx-auto mt-20 animate-in fade-in slide-in-from-bottom-10 duration-700 delay-300">
+            <div className="text-center mb-12">
+              <h2 className="font-display font-bold text-4xl md:text-5xl mb-4">
+                Schedule a <span className="text-gradient">Call</span>
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                Book a 15-minute introductory call with our team to discuss your needs.
+              </p>
+            </div>
+            <div className="glass-card rounded-2xl overflow-hidden">
               <div 
-                className="calendly-inline-widget w-full" 
-                data-url="https://calendly.com/info-zer0point/15min?background_color=0f172a&text_color=f8fafc&primary_color=0ea5e9" 
-                style={{ minWidth: '320px', height: '700px' }} 
+                className="calendly-inline-widget" 
+                data-url="https://calendly.com/zer0point/scheduled-call?hide_gdpr_banner=1&background_color=0f172a&text_color=ffffff&primary_color=0ea5e9"
+                style={{ minWidth: '320px', height: '700px' }}
               />
             </div>
           </div>
         </div>
       </main>
-
-      <style>{`
-        .phone-input-dark input {
-          background: transparent !important;
-          border: none !important;
-          color: #e5e7eb !important;
-          outline: none !important;
-          width: 100%;
-        }
-        .phone-input-dark input::placeholder {
-          color: #4b5563 !important;
-        }
-        .phone-input-dark .PhoneInputCountry {
-          margin-right: 0.75rem;
-        }
-        .phone-input-dark .PhoneInputCountrySelect {
-          background: #0f172a !important;
-          color: #e5e7eb !important;
-          border: none !important;
-        }
-        .phone-input-dark .PhoneInputCountrySelect option {
-          background: #0f172a !important;
-          color: #e5e7eb !important;
-        }
-      `}</style>
     </div>
   );
 }

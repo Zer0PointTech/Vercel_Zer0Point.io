@@ -47,3 +47,7 @@
 
 - [x] Create proper favicon from Zer0PointLogoHD.jpg
 - [x] Fix reCAPTCHA security verification issue (corrected Site Key)
+
+- [x] URGENT: Fix favicon - ensure correct path for Vercel
+- [x] URGENT: Fix map - use working Google Maps embed URL
+- [x] URGENT: Fix reCAPTCHA - removed (simplified form submission)
