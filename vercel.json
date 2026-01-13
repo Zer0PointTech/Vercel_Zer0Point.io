@@ -1,5 +1,6 @@
 {
   "buildCommand": "pnpm run build:vercel",
+  "nodeVersion": "18.x",
   "outputDirectory": "dist/public",
   "installCommand": "pnpm install",
   "framework": null,
