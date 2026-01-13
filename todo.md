@@ -38,3 +38,5 @@
 - [x] Fix API JSON error on contact form submission
 - [x] Fix Google Maps not loading on contact page
 - [x] Setup complete SEO meta tags for all pages
+
+- [x] Add favicon to browser tab
