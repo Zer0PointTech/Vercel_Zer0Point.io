@@ -3,7 +3,9 @@
   "outputDirectory": "dist/public",
   "installCommand": "pnpm install",
   "framework": null,
-  "rewrites": [
-    { "source": "/((?!api/|favicon|apple-touch-icon|android-chrome|site\\.webmanifest|robots\\.txt|sitemap\\.xml|assets/|images/).*)", "destination": "/index.html" }
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/api/(.*)", "dest": "/api/$1" },
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
