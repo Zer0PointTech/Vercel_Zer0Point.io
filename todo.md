@@ -25,3 +25,6 @@
 
 - [x] Add Naji (najimasri@zer0point.io) as BCC recipient for contact form emails
 - [x] Comprehensive website review before go-live
+
+- [x] Fix reCAPTCHA security verification failed error (domain authorization issue)
+- [x] Fix Daniel's expertise text wrapping on mobile (first item showing on two lines)

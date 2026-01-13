@@ -23,7 +23,7 @@ export default function About() {
       role: "Managing Partner",
       bio: "Daniel Khayat is a senior executive with deep expertise in enterprise sales, business development, and regional growth strategy across the Middle East and Africa. He has led high‑impact commercial initiatives, expanded channel ecosystems, and delivered consistent revenue acceleration, earning recognition such as the 2023 Global Sales MVP Award. Previously serving as Head of Product at HTC MEA, Daniel drove a 25% increase in Telco and enterprise sales while shaping go‑to‑market strategies for advanced technology solutions. His career includes collaborations with leading global innovators including HTC, Magic Leap, Meta, Microsoft, Google, Qualcomm, HP, Dell, Nokia, and Sony, as well as major telecom operators across the Gulf and Africa. Daniel specializes in immersive B2B technology and XR enterprise deployments, leveraging AI‑powered post‑production platforms and integrated AI solutions for remote assistance, virtual collaboration, and VR‑based HSE and soft‑skills training. As a trusted advisor to C‑level leaders, he focuses on driving market penetration, unlocking scalable growth opportunities, and delivering transformative digital solutions that accelerate innovation for enterprise and government clients.",
       expertise: [
-        "C‑Suite Engagement & Enterprise Relationship Building",
+        "C‑Suite & Enterprise Engagement",
         "Partner & Ecosystem Collaboration",
         "Enterprise Sales Leadership & Deal Acceleration",
         "Complex Portfolio & Product Strategy Management"
