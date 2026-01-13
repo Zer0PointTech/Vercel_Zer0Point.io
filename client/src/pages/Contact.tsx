@@ -142,7 +142,7 @@ export default function Contact() {
                     </div>
                     <div className="mt-6 w-full h-[300px] rounded-lg overflow-hidden border border-white/10">
                       <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3609.8693!2d55.2763263!3d25.2075206!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f4282b7f0e8a9%3A0x8c5f8c8c8c8c8c8c!2sDIFC%20Innovation%20Hub!5e0!3m2!1sen!2sae!4v1705000000000"
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3609.8693!2d55.2752528!3d25.2101353!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f439f688fe9ff%3A0x43c25d95a77e0b93!2sDIFC%20Innovation%20Hub!5e0!3m2!1sen!2sae!4v1768295097575!5m2!1sen!2sae"
                         width="100%"
                         height="100%"
                         style={{ border: 0 }}

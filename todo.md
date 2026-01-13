@@ -51,3 +51,6 @@
 - [x] URGENT: Fix favicon - ensure correct path for Vercel
 - [x] URGENT: Fix map - use working Google Maps embed URL
 - [x] URGENT: Fix reCAPTCHA - removed (simplified form submission)
+
+- [x] Fix map - get correct Google Maps embed URL for DIFC Innovation Hub (not Al Safadi)
+- [x] Fix favicon - ensure it displays correctly on Vercel (36KB proper ICO)
