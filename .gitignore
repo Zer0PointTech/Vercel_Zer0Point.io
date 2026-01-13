@@ -105,3 +105,9 @@ temp/
 *.db
 *.sqlite
 *.sqlite3
+
+# Vercel
+.vercel/
+
+# Manus-specific (not needed for Vercel)
+.manus/

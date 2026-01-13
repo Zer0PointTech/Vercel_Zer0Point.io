@@ -28,3 +28,9 @@
 
 - [x] Fix reCAPTCHA security verification failed error (domain authorization issue)
 - [x] Fix Daniel's expertise text wrapping on mobile (first item showing on two lines)
+
+- [x] Prepare project for Vercel deployment
+- [ ] Create GitHub repository and push code
+- [ ] Deploy to Vercel and connect custom domain
+- [ ] Configure environment variables on Vercel
+- [x] Update Privacy Policy to reflect no database storage (only email transmission)
