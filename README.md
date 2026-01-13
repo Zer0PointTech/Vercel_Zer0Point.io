@@ -1,4 +1,4 @@
-# Zer0Point Tech Ltd - Corporate Website
+# Zer0Point Tech Ltd - Corporate Website 
 
 A modern, responsive corporate website for Zer0Point Tech Ltd, a consulting firm specializing in GCC market entry and technology solutions.
 
@@ -68,3 +68,4 @@ MIT
 ## Version
 
 Deployed: January 13, 2026
+# Deployment 1768292811

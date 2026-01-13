@@ -44,3 +44,6 @@
 - [x] Fix favicon not displaying on Vercel
 - [x] Update map to show exact office location (not just DIFC)
 - [x] Fix reCAPTCHA - updated Site Key to match Google Cloud Console
+
+- [x] Create proper favicon from Zer0PointLogoHD.jpg
+- [x] Fix reCAPTCHA security verification issue (corrected Site Key)

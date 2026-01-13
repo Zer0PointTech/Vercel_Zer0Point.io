@@ -16,7 +16,7 @@ import 'react-phone-number-input/style.css';
 import { toast } from 'sonner';
 
 // reCAPTCHA Enterprise Site Key
-const RECAPTCHA_SITE_KEY = "6LdB_0gsAAAAHt4bj7ldDQk8Ro2nt28ViiAtdWC";
+const RECAPTCHA_SITE_KEY = "6LdB_0gsAAAAAHt4bj7ldDQk8Ro2nt28ViiAtdWC";
 
 // Declare grecaptcha types
 declare global {
