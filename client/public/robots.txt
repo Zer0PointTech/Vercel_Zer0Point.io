@@ -1,0 +1,11 @@
+# Robots.txt for Zer0Point Tech Ltd
+# https://www.zer0point.io
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.zer0point.io/sitemap.xml
+
+# Disallow admin/private paths (if any)
+Disallow: /api/

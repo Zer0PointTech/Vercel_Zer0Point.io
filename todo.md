@@ -34,3 +34,7 @@
 - [ ] Deploy to Vercel and connect custom domain
 - [ ] Configure environment variables on Vercel
 - [x] Update Privacy Policy to reflect no database storage (only email transmission)
+
+- [x] Fix API JSON error on contact form submission
+- [x] Fix Google Maps not loading on contact page
+- [x] Setup complete SEO meta tags for all pages

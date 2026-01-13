@@ -9,13 +9,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Mail, MapPin, Send, Loader2, CheckCircle2, Home, Shield } from 'lucide-react';
-import { MapView } from '@/components/Map';
 import SEO from '@/components/SEO';
 import { Link, useLocation } from 'wouter';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
-import { trpc } from '@/lib/trpc';
-
 import { toast } from 'sonner';
 
 // reCAPTCHA Enterprise Site Key
@@ -47,20 +44,6 @@ export default function Contact() {
     message: ''
   });
 
-  const contactMutation = trpc.contact.submit.useMutation({
-    onSuccess: () => {
-      setIsSuccess(true);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      setPhone('');
-      setPrivacyAccepted(false);
-      setIsSubmitting(false);
-    },
-    onError: (error) => {
-      toast.error(error.message || "Failed to send message. Please try again.");
-      setIsSubmitting(false);
-    }
-  });
-
   // Load reCAPTCHA Enterprise script
   useEffect(() => {
     const script = document.createElement('script');
@@ -74,7 +57,6 @@ export default function Contact() {
     document.head.appendChild(script);
 
     return () => {
-      // Cleanup script on unmount
       const existingScript = document.querySelector(`script[src*="recaptcha/enterprise.js"]`);
       if (existingScript) {
         existingScript.remove();
@@ -139,14 +121,38 @@ export default function Contact() {
       return;
     }
 
-    contactMutation.mutate({
-      name: formData.name,
-      email: formData.email,
-      phone: phone,
-      subject: formData.subject,
-      message: formData.message,
-      recaptchaToken: token,
-    });
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: phone,
+          subject: formData.subject,
+          message: formData.message,
+          recaptchaToken: token,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setIsSuccess(true);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        setPhone('');
+        setPrivacyAccepted(false);
+      } else {
+        toast.error(data.error || "Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      console.error("Contact form error:", error);
+      toast.error("Failed to send message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -197,25 +203,20 @@ export default function Contact() {
                       </div>
                     </div>
                     <div className="mt-6 w-full h-[300px] rounded-lg overflow-hidden border border-white/10">
-                      <MapView 
-                        className="w-full h-full"
-                        onMapReady={(map: google.maps.Map) => {
-                          const difcLocation = { lat: 25.2115, lng: 55.2838 };
-                          map.setCenter(difcLocation);
-                          map.setZoom(15);
-                          new google.maps.Marker({
-                            position: difcLocation,
-                            map: map,
-                            title: "Zer0Point Tech Ltd - DIFC Innovation Hub"
-                          });
-                        }}
+                      <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3609.8642!2d55.2838!3d25.2115!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43496ad9c645%3A0xbde66e5084295162!2sDIFC%20Innovation%20Hub!5e0!3m2!1sen!2sae!4v1704067200000!5m2!1sen!2sae"
+                        width="100%"
+                        height="100%"
+                        style={{ border: 0 }}
+                        allowFullScreen
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                        title="Zer0Point Office Location - DIFC Innovation Hub, Dubai"
                       />
                     </div>
                   </div>
                 </div>
               </div>
-
-
             </div>
 
             {/* Contact Form */}
@@ -398,24 +399,6 @@ export default function Contact() {
         .phone-input-dark .PhoneInputCountrySelect option {
           background: #0f172a !important;
           color: #e5e7eb !important;
-          padding: 8px 12px;
-        }
-        .phone-input-dark .PhoneInputCountrySelect option:hover,
-        .phone-input-dark .PhoneInputCountrySelect option:focus,
-        .phone-input-dark .PhoneInputCountrySelect option:checked {
-          background: #1e293b !important;
-          color: #0ea5e9 !important;
-        }
-        .phone-input-dark .PhoneInputCountrySelectArrow {
-          color: #9ca3af !important;
-          border-color: #9ca3af !important;
-        }
-        .phone-input-dark .PhoneInputCountryIcon {
-          border-radius: 4px;
-          overflow: hidden;
-        }
-        .grecaptcha-badge {
-          visibility: hidden !important;
         }
       `}</style>
     </div>
